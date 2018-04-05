@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/Hibernate/hiberanate jars/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>SampleUI</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>build.xml</name>
+			<type>1</type>
+			<location>C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/build.xml</location>
+		</link>
+		<link>
+			<name>classes</name>
+			<type>2</type>
+			<location>C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/target/classes</location>
+		</link>
+		<link>
+			<name>java</name>
+			<type>2</type>
+			<location>C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/src/main/java</location>
+		</link>
+	</linkedResources>
+</projectDescription>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.1:1521:XE</property>
+		<property name="hibernate.connection.username">system</property>
+		<property name="hibernate.connection.password">Admin123</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- <mapping class="com.info.apple.Employee" /> <mapping class="com.info.apple.Person" 
+			/> <mapping class="com.info.apple.Employeeh" /> <mapping class="com.info.apple.Student" 
+			/> <mapping class="com.info.embed.Customer" /> <mapping class="com.info.embed.Name" 
+			/> <mapping class="com.info.embed.Supplier" /> -->
+		<!-- <mapping class="com.info.apple.onetoone.Country" /> <mapping class="com.info.apple.onetoone.HeadOfState" 
+			/> -->
+		<!-- <mapping class="com.info.apple.onetomany.Trainer" /> <mapping class="com.info.apple.onetomany.Batch" 
+			/> -->
+		<!-- <mapping class="com.info.apple.manytomany.Employee" /> <mapping class="com.info.apple.manytomany.Previledge" 
+			/> -->
+		<!-- <mapping class="com.info.apple.Sample" /> -->
+
+		<!-- <mapping class="com.info.FourthHibernateProject.Student" /> <mapping 
+			class="com.info.FourthHibernateProject.StudentDetail" /> -->
+
+		<mapping class="com.info.apple.onetoone.Address" />
+		<mapping class="com.info.apple.onetoone.Student" />
+	</session-factory>
+
+</hibernate-configuration>
+  	

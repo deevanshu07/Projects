@@ -1,0 +1,78 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":2,
+    "params":{
+      "q":"id:6444",
+      "indent":"on",
+      "wt":"json"}},
+  "response":{"numFound":1,"start":0,"docs":[
+      {
+        "id":"6444",
+        "product":"Data Integation",
+        "content":["Data Integation",
+          "Solr",
+          "Community",
+          "Knowledge Management",
+          "How to Validate file schema with metadata schema",
+          "\nHi,\n\n\nI need to validate the Excel file schema with metadata schema&nbsp;\n\n\nPlease help me out to find the component which can do this ?\n",
+          "\nYes we can compare only type,length,Data Pattern through tSchemaComplianceCheck,\n\n\nis there any way to compare columns\n\n\nExample:\n\n\nIn my metadata\n\n\n  \n\n\n&nbsp;\n\n\nIn my file below are the columns\n\n\n  \n\n\n&nbsp;\n\n\nI need validate file schema with above metadata list.\n\n\nPlease suggest me. is there any way to do this?\n"],
+        "thread_last_edit_time":["2017-06-13T16:31:29Z",
+          "2017-06-13T16:32:30Z",
+          "2017-06-13T16:34:12Z",
+          "2017-06-13T16:35:19Z",
+          "2017-06-13T16:36:41Z"],
+        "messageBoard":"Solr",
+        "viewsCount":8,
+        "source":"Community",
+        "label":["Knowledge Management"],
+        "thread_post_time":["2017-06-13T16:31:29Z",
+          "2017-06-13T16:32:30Z",
+          "2017-06-13T16:34:12Z",
+          "2017-06-13T16:35:19Z",
+          "2017-06-13T16:36:41Z"],
+        "post_time":"2017-06-13T16:30:15Z",
+        "topicTitle":"How to Validate file schema with metadata schema",
+        "topicBody":"\nHi,\n\n\nI need to validate the Excel file schema with metadata schema&nbsp;\n\n\nPlease help me out to find the component which can do this ?\n",
+        "kudosCount":3,
+        "last_edit_time":"2017-06-13T16:30:15Z",
+        "message_rating":0,
+        "threadKudosCount":[0,
+          0,
+          0,
+          0,
+          0],
+        "clicks":32208,
+        "threadViewsCount":[7,
+          6,
+          5,
+          4,
+          3],
+        "threadReply":["Re: How to Validate file schema with metadata schema",
+          "Re: How to Validate file schema with metadata schema",
+          "Re: How to Validate file schema with metadata schema",
+          "Re: How to Validate file schema with metadata schema",
+          "Re: How to Validate file schema with metadata schema"],
+        "threadReplyBody":"\nYes we can compare only type,length,Data Pattern through tSchemaComplianceCheck,\n\n\nis there any way to compare columns\n\n\nExample:\n\n\nIn my metadata\n\n\n  \n\n\n&nbsp;\n\n\nIn my file below are the columns\n\n\n  \n\n\n&nbsp;\n\n\nI need validate file schema with above metadata list.\n\n\nPlease suggest me. is there any way to do this?\n",
+        "_version_":1570919428184342528}]
+  },
+  "facet_counts":{
+    "facet_queries":{},
+    "facet_fields":{
+      "version":[
+        "6.2.1",0,
+        "Winter '17",0],
+      "product":[
+        "Data Integation",1,
+        "Talend Integation Cloud",0,
+        "Talend Unified Platform",0],
+      "source":[
+        "Community",1,
+        "Help",0,
+        "Jira",0]},
+    "facet_ranges":{},
+    "facet_intervals":{},
+    "facet_heatmaps":{}},
+  "highlighting":{
+    "6444":{}}}
+

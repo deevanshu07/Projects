@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- <bean id="studentbean" class="com.info.model.Employee"> <property name="name" 
+		value="Deevanshu Mahajan"></property> </bean> -->
+
+	<!-- <bean id="questionBean" class="com.info.model.Questions"> <constructor-arg 
+		value="101"></constructor-arg> <constructor-arg value="Deevanshu"></constructor-arg> 
+		<constructor-arg> <list> <value>Java</value> <value>C++</value> <value>Python</value> 
+		</list> </constructor-arg> </bean> -->
+
+	<!-- <bean id="springMapBean" class="com.info.model.Spring_Map"> <constructor-arg 
+		value="101"></constructor-arg> <constructor-arg value="Java"></constructor-arg> 
+		<constructor-arg> <map> <entry key="10" value="Ajay Kumar"></entry> <entry 
+		key="11" value="John Smith"></entry> <entry key="12" value="Raj Kumar"></entry> 
+		</map> </constructor-arg> </bean> -->
+
+
+	<!-- <bean id="answer1" class="com.info.model.Questions"> <constructor-arg 
+		value="1"></constructor-arg> <constructor-arg value="Java is a Programming 
+		Language"></constructor-arg> </bean> <bean id="answer2" class="com.info.model.Questions"> 
+		<constructor-arg value="2"></constructor-arg> <constructor-arg value="Java 
+		is a Platform"></constructor-arg> </bean> <bean id="user1" class="com.info.model.Answers"> 
+		<constructor-arg value="1"></constructor-arg> <constructor-arg value="Arun 
+		Kumar"></constructor-arg> </bean> <bean id="user2" class="com.info.model.Answers"> 
+		<constructor-arg value="2"></constructor-arg> <constructor-arg value="Varun 
+		Kumar"></constructor-arg> </bean> <bean id="springMapBean" class="com.info.model.Spring_Map"> 
+		<constructor-arg value="1"></constructor-arg> <constructor-arg value="What 
+		is Java?"></constructor-arg> <constructor-arg> <map> <entry key-ref="answer1" 
+		value-ref="user1"></entry> <entry key-ref="answer2" value-ref="user2"></entry> 
+		</map> </constructor-arg> </bean> -->
+
+
+	<!-- <bean id="setterBean" class="com.info.model.Setter_Inject"> <property 
+		name="id"> <value>101</value> </property> <property name="name"> <value>Deevanshu</value> 
+		</property> <property name="city"> <value>Noida</value> </property> </bean> -->
+
+	<!-- <bean id="b" class="com.info.model.B"></bean> <bean id="a" class="com.info.model.A" 
+		autowire="byName"></bean> -->
+
+	<!-- <bean id="a" class="com.info.model.A" factory-method="getA"></bean> -->
+
+
+	<!-- <bean id="p" class="com.info.model.PrintableFactory" factory-method="getPrintable"></bean> -->
+
+	<!-- <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> 
+		<property name="dataSource" ref="ds"></property> </bean> <bean id="edao" 
+		class="com.info.model.EmployeeDao"> <property name="jdbcTemplate" ref="jdbcTemplate"></property> 
+		</bean> -->
+
+	    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">  
+        <property name="driverClassName"  value="oracle.jdbc.driver.OracleDriver"></property>  
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>  
+        <property name="username" value="system"></property>  
+        <property name="password" value="Admin123"></property>  
+    </bean>  
+      
+    <bean id="mysessionFactory"  class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource"></property>  
+          
+        <property name="mappingResources">  
+        <list>  
+        <value>employee.hbm.xml</value>  
+        </list>  
+        </property>  
+          
+        <property name="hibernateProperties">  
+            <props>  
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>  
+                <prop key="hibernate.hbm2ddl.auto">update</prop>  
+                <prop key="hibernate.show_sql">true</prop>  
+                  
+            </props>  
+        </property>  
+    </bean>  
+      
+    <bean id="template" class="org.springframework.orm.hibernate3.HibernateTemplate">  
+    <property name="sessionFactory" ref="mysessionFactory"></property>  
+    </bean>  
+      
+    <bean id="d" class="com.info.model.EmployeehDao">  
+    <property name="template" ref="template"></property>  
+    </bean> 
+    
+</beans>  

@@ -1,0 +1,14 @@
+<form name="frmImgUpload" id="fImgUpload" action="airest/services/image/upload" enctype="multipart/form-data">
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Image Search</h4>
+		<button type="button" class="close pull-right" aria-label="Close" data-dismiss="modal">
+			<span aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div ng-class="fileUpload.input"><input type="file" accept="image/*" onchange="angular.element( this ).scope().uploadImg( this.files )"></div>
+		<div ng-class="fileUpload.loader"><div class="text-center"><i class="fa fa-spinner fa-spin" style="font-size:72px;"></i></div></div>
+		<div ng-class="fileUpload.statusError">There is an issue with this file.  Please upload another.</div>
+	</div>
+</form>
+

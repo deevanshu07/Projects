@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/aopalliance-repackaged-2.4.0-b34.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/apache-activemq-4.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/asm-debug-all-5.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/gson-2.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/hk2-api-2.4.0-b34.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/hk2-locator-2.4.0-b34.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/hk2-utils-2.4.0-b34.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/httpclient-4.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/httpcore-4.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/httpmime-4.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/javassist-3.18.1-GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/javax.annotation-api-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/javax.inject-2.4.0-b34.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/javax.servlet-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/javax.ws.rs-api-2.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/jaxb-api-2.2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/jcl-over-slf4j-1.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/jersey-client.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/jersey-common.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/jersey-container-servlet.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/jersey-container-servlet-core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/jersey-guava-2.23.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/jersey-media-jaxb.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/jersey-server.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/JMS_Appliaction.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/json-20160810.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/log4j-api-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/noggit-0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/org.osgi.core-4.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/org-apache-commons-lang.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/osgi-resource-locator-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/persistence-api-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/slf4j-api-1.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-analysis-extras-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-analytics-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-cell-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-clustering-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-core-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-dataimporthandler-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-dataimporthandler-extras-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-langid-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-map-reduce-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-morphlines-cell-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-morphlines-core-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-solrj-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-test-framework-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-uima-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/solr-velocity-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/stax2-api-3.1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/validation-api-1.1.0.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/woodstox-core-asl-4.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/Desktop/SolrSearchRestServices/WebContent/WEB-INF/lib/zookeeper-3.4.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/AppData/Roaming/Skype/My Skype Received Files/lib/lib/json-simple-1.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Workspace/OKM/MyWebProject1/WebContent/WEB-INF/lib/org.json.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/gson-2.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

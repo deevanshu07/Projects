@@ -1,0 +1,243 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+	<title>Schneider Electric</title>
+	
+	<!-- CSS Style Sheets
+	Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<!-- JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/util/function.js"></script>
+	<script src="js/filter/filters.js"></script>
+	<script src="js/services/webservice.js"></script>
+	<script src="js/controller/Searchcontroller.js"></script>
+	</head>
+<body data-ng-app="solr" data-ng-controller="Searchcontroller"> 
+	
+	<div class="container-fluid" data-ng-controller="Searchcontroller">
+		<!-- <div class="row" style="height:40px; border-bottom: 1px solid #eaeaea;background-color: #f2f2f2;">
+			
+		</div> -->
+		
+		<div class="row header">
+			<img style="margin-left:13%;" src="images/wwlogo.png"/>
+		</div>
+		
+		
+		
+		<!-- <div class="row searchBar">
+			<div class="custom_search">
+				<div class="col-md-10">
+	      			<input type="text" class="form-control" id="usr" data-ng-model="search" data-ng-keyup="$event.keyCode == 13 && searching()">
+	      		</div>
+	      		<div class="col-md-1 col-xs-3">
+	      			<button type="button" class="btn  btn-cust-style"  data-ng-click="searching()"><span class="glyphicon glyphicon-search"></span></button>
+	    		</div>
+    		</div>
+		</div> -->
+		
+		<div class="row searchBar">
+			<div class="custom_search">
+				<div class="col-md-10">
+	      			<input type="text" class="form-control" id="usr" data-ng-model="search" data-ng-keyup="onkeypress($event.keyCode) || suggestion()  || getSuggestions()"
+	      			data-ng-focus="focus = true" data-ng-blur="count=-1">
+	      		</div>
+	      		<div class="col-md-1 col-xs-3">
+	      			<button type="button" class="btn  btn-cust-style"  data-ng-click="searching()"><span class="glyphicon glyphicon-search" ></span></button>
+	    		</div>
+    		</div>
+    		<div class="search-sug" data-ng-show="search != '' && focus == true">
+    			<div data-ng-repeat="facet in searchSuggestion"  data-ng-show="facet.val !=0" data-ng-class="{'back-cust': $index == count}"  data-ng-mouseenter="setCount($index)" data-ng-mouseleave="setCount(-1)" data-ng-click="(facet.val == 0) || suggestionFacetSearch(facet.name)"><span style="padding-left:5px;">{{search}} in <span data-ng-class=" facet.val != 0 ? 'cust-color-green' : 'cust-color-gray'">{{facet.name}}</span><span class="pull-right" data-ng-show="$index == 0" style="font-size:12px;padding-right:5px;font-weight:400">search suggestion</span></span></div>
+    			<div style="margin-bottom:-15px;"></div>
+    			<hr/>
+    			<div style="margin-top:-15px;"></div>
+    			<div data-ng-repeat="searchKeywords in searchKeywordSuggestion" data-ng-click="setSearchKeyword(searchKeywords.term)"><span style="padding-left:5px;font-weight:400;color:gray" data-ng-bind-html="searchKeywords.term | highlightPartOfText:search"></span></div>
+    			<div style="margin-bottom:5px;"></div>
+    		</div>
+		</div>
+		
+		<div class="row content">
+			<!-- Column for FACETS -->
+			<div class="col-md-3">
+				
+				<!-- KbType FACET -->
+				<div class="panel-group facetCol" data-ng-show="kbTypeFacet != undefined && kbTypeFacet.length != 0">
+				  <div class="panel panel-default">
+				    <div class="panel-heading panel-custom-style">
+				      <h4 class="panel-title panel-title-cust">
+				        <a data-toggle="collapse" href="javascript:;" data-target="#collapse1"><b>KB Type</b><span class="glyphicon glyphicon-menu-right pull-right" data-aria-hidden="true"></span></a>
+				      </h4>
+				    </div>
+				    <div id="collapse1" class="panel-collapse collapse in">
+				      <div class="panel-body">
+				      	<div class="checkbox">
+     						 <label class="labelStyle"><input type="checkbox" value="" data-ng-click="fetchResultForFacet('')" data-ng-checked="facet == ''">All Sources<span class="pull-right">({{kbTypeFacet|totalDocument}})</span></label>
+     						 <label class="labelStyle" data-ng-repeat="facet in kbTypeFacet" data-ng-show="facet.val != 0"><input type="checkbox" value="" data-ng-click="insertKBFacet(facet.name)" data-ng-checked="facet.name|isFacetChecked:selectedKBFacet">{{facet.name}}<span class="pull-right">({{facet.val}})</span></label>
+     					 </div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				<!-- DocType FACET -->
+				<div class="panel-group facetCol" data-ng-show="docTypeFacet != undefined && docTypeFacet.length != 0">
+				  <div class="panel panel-default">
+				    <div class="panel-heading panel-custom-style">
+				      <h4 class="panel-title panel-title-cust">
+				        <a data-toggle="collapse" href="javascript:;" data-target="#collapse2"><b>Document Type</b> <span class="glyphicon glyphicon-menu-right pull-right" data-aria-hidden="true"></span></a>
+				      </h4>
+				    </div>
+				    <div id="collapse2" class="panel-collapse collapse in">
+				      <div class="panel-body">
+				      	<div class="checkbox">
+     						 <label class="labelStyle" data-ng-repeat="facet in docTypeFacet" data-ng-show="facet.val != 0"><input type="checkbox" value="" data-ng-click="insertDTFacet(facet.name)" data-ng-checked="facet.name|isFacetChecked:selectedDTFacet">{{facet.name}}<span class="pull-right">({{facet.val}})</span></label>
+     					 </div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				
+				<!-- Product FACET -->
+				<div class="panel-group facetCol" data-ng-show="productFacet != undefined && productFacet.length != 0">
+				  <div class="panel panel-default">
+				    <div class="panel-heading panel-custom-style">
+				      <h4 class="panel-title panel-title-cust">
+				        <a data-toggle="collapse" href="javascript:;" data-target="#collapse3"><b>Product</b> <span class="glyphicon glyphicon-menu-right pull-right" data-aria-hidden="true"></span></a>
+				      </h4>
+				    </div>
+				    <div id="collapse3" class="panel-collapse collapse">
+				      <div class="panel-body" style="max-height:200px;overflow-y: auto;">
+     					 <div class="checkbox">
+     						 <label class="labelStyle" data-ng-repeat="facet in productFacet" data-ng-show="facet.val != 0"><input type="checkbox" value="" data-ng-click="insertProFacet(facet.name)" data-ng-checked="facet.name|isFacetChecked:selectedProFacet">{{facet.name}}<span class="pull-right">({{facet.val}})</span></label>
+     					 </div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+			<!-- Date Range FACET -->
+				<div class="panel-group facetCol" data-ng-show="last3months != undefined">
+				  <div class="panel panel-default">
+				    <div class="panel-heading panel-custom-style">
+				      <h4 class="panel-title panel-title-cust">
+				        <a data-toggle="collapse" href="javascript:;" data-target="#collapse4"><b>Date Range</b> <span class="glyphicon glyphicon-menu-right pull-right" data-aria-hidden="true"></span></a>
+				      </h4>
+				    </div>
+				    <div id="collapse4" class="panel-collapse collapse in">
+				      <div class="panel-body">
+				      	<div class="radio">
+				      		<label class="labelStyle"><input name="dateRange" type="radio" value="0" data-ng-change="dateRangeFilter()" data-ng-checked="true" data-ng-model="dateRange">All</label>
+     						 <label class="labelStyle"><input name="dateRange" type="radio" value="1" data-ng-change="dateRangeFilter()" data-ng-model="dateRange">Last 3 Months<span class="pull-right">({{last3months}})</span></label>
+     						 <label class="labelStyle"><input name="dateRange" type="radio" value="2" data-ng-change="dateRangeFilter()" data-ng-model="dateRange">Last Year<span class="pull-right">({{lastYear}})</span></label>
+     					 </div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		
+				
+			</div>
+			
+			<!-- Column For Results -->
+			<div class="col-md-8">
+				<div class="row" style="margin-bottom:-10px;">
+					<div class="col-md=-3 pull-left">
+						<p style="font-size:16px;padding-top:10px;"><b>{{msg}}</b></p>
+						<span>About {{numFound}} Records</span>
+					</div>
+					<div class="col-md-3 pull-right" data-ng-show="numFound != 0">
+						<div class="form-group">
+					      <label for="sel1">Sort By:</label>
+					      <select class="form-control" id="sel1" data-ng-model="sortOrder" data-ng-change="sorting()">
+					      	<option value="">(select)</option>
+					      	<option value="rating_desc">Popularity</option>
+					      	<option value="score_desc">Relevancy</option>
+					        <option value="dateCreated_asc">Date Ascending</option>
+					        <option value="dateCreated_desc">Date Descending</option>
+					      </select>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-top:5px;" data-ng-show="numFound != 0">
+					<div class="filter-group" data-ng-repeat="facet in kbTypeFacet" data-ng-show="facet.val != 0" data-ng-if="facet.name|isFacetChecked:selectedKBFacet" data-ng-click="insertKBFacet(facet.name)">{{facet.name}}<span class="cross"></span></div>
+					<div class="filter-group" data-ng-repeat="facet in docTypeFacet" data-ng-show="facet.val != 0" data-ng-if="facet.name|isFacetChecked:selectedDTFacet" data-ng-click="insertDTFacet(facet.name)">{{facet.name}}<span class="cross"></span></div>
+					<div class="filter-group" data-ng-repeat="facet in productFacet" data-ng-show="facet.val != 0" data-ng-if="facet.name|isFacetChecked:selectedProFacet" data-ng-click="insertProFacet(facet.name)">{{facet.name}}<span class="cross"></span></div>			
+				</div>
+				<div class="row">
+					<hr/>
+					<div class="result" data-ng-repeat="doc in documentList">
+						<a href="http://iomskyapp63v:8080/InvensysDocIDAttribute/content/params?docId={{doc.docId}}" data-ng-if="doc.docId | isUrl" target="_blank" style="text-decoration: none"><p style="color:#337ab7;cursor:pointer;" data-ng-bind-html="highlight | extractTitle:doc.docId:doc.title" data-ng-click="clickThrough($index+1+start,doc.title,doc.docId,101)"></p></a>
+						<a href="{{doc.docId}}"  data-ng-if="!(doc.docId | isUrl)" target="_blank"  style="text-decoration: none"><p style="color:#337ab7;cursor:pointer;" data-ng-bind-html="highlight | extractTitle:doc.docId:doc.title" data-ng-click="clickThrough($index+1+start,doc.title,doc.docId,101)"></p></a>
+						<p><b>Type:</b> {{doc.docType}} | <b>Score:</b> {{doc.score}} | <b>Date:</b> {{doc.dateCreated | date}} | <b>Rating:</b> {{doc.rating}}</p>
+						<p data-ng-bind-html="highlight | extractContent:doc.docId:doc.content">{{doc.content[2]}}</p>
+						<hr/>
+					</div>
+				</div>
+				<div class="row" data-ng-class="loading" data-ng-show="loading == 'loading'" style="height:200px;">
+					
+				</div>
+				<div class="row" data-ng-show="numFound != 0 && numFound > rows">
+					<ul class="pagination" >
+					    <li  data-ng-class="{'disabled': range == 1}" data-ng-show="range != 1">
+					      <a class="pagerStyle" data-aria-label="Previous" data-ng-click="range = range - 10">
+					        <span data-aria-hidden="true">&laquo;</span>
+					      </a>
+					    </li>
+					    <li data-ng-repeat="n in [] | range:range:numFound:rows" data-ng-class="{'active': (n-1) == start/rows}"><a class="pagerStyle" data-ng-click="pagination(n)">{{n}}</a></li>
+					    <li  data-ng-class="{'disabled': (range+9)*rows >= numFound}" data-ng-hide="(range+9)*rows >= numFound">
+					      <a  class="pagerStyle" data-aria-label="Next" data-ng-click="range = range + 10">
+					        <span data-aria-hidden="true">&raquo;</span>
+					      </a>
+					    </li>
+				  </ul>
+					<!-- <ul class="pagination pull-right">
+  					    <li data-ng-class="{'active': rows == 10}"><a class="pagerStyle" data-ng-click="resultPerPage(10)">10</a></li>
+					    <li data-ng-class="{'active': rows == 20}"><a class="pagerStyle" data-ng-click="resultPerPage(20)">20</a></li>
+					    <li data-ng-class="{'active': rows == 30}"><a class="pagerStyle" data-ng-click="resultPerPage(30)">30</a></li> 
+  					</ul> -->
+  					
+  					<div class="pull-right" data-ng-show="numFound != 0">
+						<div class="form-group">
+					      <label for="sel1">Result Per Page :</label>
+					      <select class="form-control" id="sel1" data-ng-model="rows" data-ng-change="resultPerPage()">
+					        <option value="10" data-ng-selected="rows == 10">10</option>
+					        <option value="25" data-ng-selected="rows == 25">25</option>
+					        <option value="50" data-ng-selected="rows == 50">50</option>
+					        <option value="100" data-ng-selected="rows == 100">100</option>
+					      </select>
+						</div>
+					</div>
+  					
+				</div>
+			</div>
+		</div>
+		<div class="row footer">
+			<div align="right" style="width:84%">
+				<span class="footerbranditem " >Avantis</span>
+				&nbsp;|&nbsp;
+				<span class="footerbranditem " >SimSci</span>
+				&nbsp;|&nbsp;
+				<span class="footerbranditem footerbranditemSel" >Wonderware</span>
+				&nbsp;|&nbsp;
+				<span class="footerbranditem " >Industry Software Suites</span>
+				
+			</div>
+			<div align="center" class="footer_copyright_style">
+           		<span class="copyright"> 
+           		<a href="http://www2.schneider-electric.com/sites/corporate/en/general/legal-information/legal-information.page" target="_blank">Legal Information</a> | <a href="http://www2.schneider-electric.com/sites/corporate/en/general/legal-information/data-privacy.page" target="_blank">Privacy Policy </a>
+           		 &nbsp; <span class="copy_new"></span>  <br>© Schneider Electric</span>
+            </div>
+		</div>
+	</div>
+
+</body>
+</html>

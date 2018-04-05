@@ -1,0 +1,95 @@
+<project name="SmartImport" default="dist" basedir="./">
+    <description>
+        Build distributable jars for Infogain custom code
+    </description>
+
+	<property file="build.properties"/>
+	
+    <!-- set global properties for this build -->
+    <property name="srcdir" value="${basedir}/src"/>
+	<property name="confdir" value="${basedir}/conf"/>
+    <property name="libdir" value="${basedir}/lib"/>
+    <property name="builddir" value="${basedir}/bin"/>
+    <property name="dist" location="${basedir}/dist"/>
+
+    <!-- test related properties -->
+    <property name="testbuilddir" value="${basedir}/test-bin"/>
+    <property name="testdir" location="${basedir}/test"/>
+    <property name="testlibdir" value="${testdir}/lib"/>
+    <property name="testsrcdir" value="${testdir}/src"/>
+    <property name="testreportsdir" value="${basedir}/test-reports"/>
+    <property name="testsuite" value="unit-test-fileset"/>
+
+
+	<target name="init">
+        <tstamp>
+          <format property="DATETIME" pattern="yyMMdd"/>
+          <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+        
+		<property name="version.num" value="1.00"/>
+		
+		<buildnumber file="build.num"/>
+
+    </target>
+
+    <path id="dyna.jars">
+        <fileset dir="${libdir}">
+	            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="test.dependencies">
+        <path path="${testbuilddir}"/>
+        <path path="${builddir}"/>
+        <path refid="unit-test-jars"/>
+        <path refid="dyna.jars"/>
+    </path>
+
+    <path id="unit-test-jars">
+        <fileset dir="${testlibdir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="build" depends="init" description="compile">
+        <mkdir dir="${builddir}"/>
+	    <javac encoding="iso-8859-1" destdir="${builddir}" debug="on">
+            <src path="${srcdir}"/>
+			<src path="${confdir}"/>
+      	<classpath refid="dyna.jars"/>
+		</javac>
+    </target>
+
+    <target name="dist" depends="clean, build" description="tar up the directories" >        
+        <manifest file="MANIFEST.MF">
+            <attribute name="Built-By" value="InQuira"/>
+            <attribute name="Main-Class" value="WSTestingInterface"/>
+            <attribute name="Implementation-Version" value="${releaseno}-b${build.number}"/>         	
+            <attribute name="Built-Date" value="${TODAY}"/>                 
+        </manifest>
+
+        <mkdir dir="${dist}"/>        
+		<jar destfile="${dist}/${build.finalName}.jar" basedir="${builddir}" manifest="MANIFEST.MF">       
+		 	<metainf dir="${basedir}/conf/"/>
+    	</jar>
+   </target>
+
+    <target name="clean" description="remove the binary files" >        
+        <delete includeemptydirs="true" failonerror="false">
+            <fileset dir="${basedir}/bin" includes="**/*" />
+            <fileset dir="${basedir}/dist" includes="**/*" />
+            <fileset dir="${basedir}/test-bin" includes="**/*" />
+            <fileset dir="${basedir}/test-reports" includes="**/*" />
+        </delete>
+   </target>
+
+    <!-- Unit Test Tasks -->
+    <fileset id="unit-test-fileset" dir="${testdir}/src">
+        <exclude name="**/*IntegrationTests.java"/>
+        <exclude name="**/*IntegrationTest.java"/>
+        <include name="**/*Tests.java"/>
+        <include name="**/*Test.java"/>
+    </fileset>
+    
+</project>

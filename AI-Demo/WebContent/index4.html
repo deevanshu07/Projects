@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<script src="js/library/angular.js"></script>
+<script src="js/angular-animate.js"></script>
+<script src="js/angular-touch.js"></script>
+<script src="js/ui-bootstrap-tpls-2.0.0.js"></script>
+<script src="js/util/function.js"></script>
+<script type="text/javascript">
+	var app = angular.module('myApp', ['ui.bootstrap']);
+	app.controller('AlertDemoCtrl',function($log,$scope,$http){
+		$log.info('its working');
+		$scope.getLocation = function(val) {
+		    return $http.get('http://localhost:8983/solr/Schneider/select?defType=dismax&q=Intouch&facet=true&facet.field=kbType&rows=0&wt=json&facet.mincount=0')
+		    .then(function(response){
+		     	var arr = [];
+		    	  $scope.kbTypeFacet = facetArrayToObj(response.data.facet_counts.facet_fields.kbType);
+		    	  for(var i=0;i<$scope.kbTypeFacet.length;i++){
+		    		  if($scope.kbTypeFacet)
+		    	  }
+				return $scope.kbTypeFacet;
+		      
+		    });
+		  };
+	});
+	app.filter('assignColor',function($log){
+		return function(input){
+			$log.info('Filter is working');
+			var arr = [];
+			if(input == undefined || input.length == 0){
+				return;
+			}else{
+				for(var i=0;i<input.length;i++){
+					
+					if(input[i].val == 0)
+						arr.push('<div style="color:gray">'+input[i].name+'</>');
+					else
+						arr.push('<div style="color:green">'+input[i].name+'</>');
+				}
+				$log.info(arr);
+				return arr;
+			}
+			
+		};
+	});
+</script>
+</head>
+<body data-ng-app="myApp">
+	<div data-ng-controller="AlertDemoCtrl">
+		<h4>Asynchronous results</h4>
+    <pre>Model: {{asyncSelected | json}}</pre>
+    <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+	</div>
+</body>
+</html>

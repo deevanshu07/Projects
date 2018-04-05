@@ -1,0 +1,779 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI POC</title>
+<!--
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+	
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-sanitize.min.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	-->
+<link rel="stylesheet" href="resc/bootstrap.min.css">
+<link rel="stylesheet" href="resc/font-awesome.css" />
+<link rel="stylesheet" href="resc/theme.css" />
+
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=PT+Sans"
+	rel="stylesheet">
+<script src="resc/angular.min.js"></script>
+<script src="resc/angular-sanitize.min.js"></script>
+<script src="resc/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="resc/jquery.min.js"></script>
+<script src="resc/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+
+<link href="css/customized.css" type="text/css" rel="stylesheet" />
+<style>
+.recommended h1 {
+	color: #fff;
+	margin: 0;
+	left: 20%;
+	height: 48px;
+	width: 277px;
+	float: none;
+	line-height: 48px;
+	text-align: center;
+	background: url('images/recommended.png') left top no-repeat;
+	position: relative;
+	font-weight: normal;
+	font-size: 15px;
+}
+
+.recommended ul {
+	background-color: rgba(0, 0, 0, .4);
+	padding: 25px;
+	clear: both;
+	float: left;
+	width: 100%;
+	margin: 0;
+	list-style: none;
+}
+
+.recommended ul li {
+	float: left;
+	width: 20%;
+	text-align: center;
+}
+</style>
+</head>
+<body ng-app="appSolr" ng-controller="ctrlSolrResults"
+	style="font-size: {{config.pref.fontSize" ng-class="pageBack"
+	class="img-responsive" ng-style="setBackground()">
+
+	<div class="pull-right" id="caseBtn" ng-if="pageBack!='landing'">
+		<button ng-click="caseFormInit()" class="btn btn-default">Create
+			a case</button>
+	</div>
+
+	<div class="{{config.pref.container}}"
+		style="font-size: {{config.pref.fontSize">
+		<div class="row">
+			<div class="col-xs-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12"></div>
+		</div>
+
+
+		<div class="row" id="searchBox">
+			<div class="col-xs-4">
+				<img src="images/searchlogo.png" alt="login logo"
+					class="loginlogo img-responsive" style="float: right;" />
+			</div>
+			<div class="col-xs-6" style="margin-top: 20px;">
+				<div class="input-group search-bar">
+
+					<div class="input-group">
+						<input type="text" ng-model="config.params.q"
+							ng-model-options="modelOptions" onclick="select()"
+							class="form-control" autofocus />
+						<div class="input-group-btn">
+
+							<a class="search-settings" href="#"> <span
+								class="settingsbtn"></span>
+
+								<div class="searchsettings-popup">
+									<div class="arrowpopup fa fa-caret-up"></div>
+									<i class="searchsettingicon"></i>
+									<h1>Search Settings</h1>
+
+									<div class="searchsettingscontent">
+										<div class="mltoggle">
+											<button ng-if="config.params.ml==false"
+												ng-model="config.params.ml" value="true"
+												ng-click="setParam('ml',true)"
+												class="mltogglebtn  btn btn-success">Enable ML</button>
+											<button class="btn btn-danger mltogglebtn"
+												ng-if="config.params.ml==true" ng-model="config.params.ml"
+												value="false" ng-click="setParam('ml',false)">Disable
+												ML</button>
+
+										</div>
+
+										<div class="sortby">
+											<label>Sort By:</label>
+											<div class="sortby_inner">
+												<button ng-click="setParam('sortField','score')"
+													ng-class="{'active': config.params.sortField == 'score'}"
+													name="sortField" ng-model="config.params.sortField"
+													value="score" autocomplete="off">Most Relevent</button>
+
+												<button ng-click="setParam('sortField','title')"
+													ng-class="{'active': config.params.sortField == 'title'}"
+													name="sortField" ng-model="config.params.sortField"
+													value="title" autocomplete="off">Name</button>
+
+												<button ng-click="setParam('sortField','release_date')"
+													ng-class="{'active': config.params.sortField == 'release_date'}"
+													name="sortField" ng-model="config.params.sortField"
+													value="release_date" autocomplete="off">Date</button>
+											</div>
+
+
+										</div>
+
+
+										<div class="sortby resultsperpage">
+											<label>Results Per Page:</label>
+
+											<div class="sortby_inner">
+												<button ng-click="setParam('count','10')"
+													ng-class="{'active': config.params.count == '10'}"
+													name="perPage" ng-model="config.params.count" value="10"
+													autocomplete="off" checked>10</button>
+												<button ng-click="setParam('count','25')"
+													ng-class="{'active': config.params.count == '25'}"
+													name="perPage" ng-model="config.params.count" value="25"
+													autocomplete="off">25</button>
+												<button ng-click="setParam('count','50')"
+													ng-class="{'active': config.params.count == '50'}"
+													name="perPage" ng-model="config.params.count" value="50"
+													autocomplete="off">50</button>
+												<button ng-click="setParam('count','100')"
+													ng-class="{'active': config.params.count == '100'}"
+													name="perPage" ng-model="config.params.count" value="100"
+													autocomplete="off">100</button>
+											</div>
+
+
+										</div>
+
+									</div>
+
+
+								</div>
+							</a>
+
+
+						</div>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-primary"
+								style="padding: 10px"15px; font-size: 17px; border-radius: 0 5px 5px 0;">Search</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-if="pageBack==='landing'">
+
+		<div class="row" style="margin-top: 100px"></div>
+
+		<div class="col-xs-12 recommended">
+			<h1>Recommended For You</h1>
+			<ul class="list-inline">
+
+				<li ng-repeat="record in recs.response.docs"
+					style="text-align: center;"><a
+					ng-click="fetchDetailRemote(record.id)"> <img
+						src="{{record.largeImage}}" alt="{{record.title}}"
+						title="{{record.title}}" style="max-width: 160px" /></a><br /></li>
+
+			</ul>
+
+			<!-- <ul>
+				<li><img src="images/m1.png" /></li>
+				<li><img src="images/m2.png" /></li>
+				<li><img src="images/m1.png" /></li>
+				<li><img src="images/m2.png" /></li>
+				<li><img src="images/m1.png" /></li>
+			</ul> -->
+
+
+		</div>
+
+	</div>
+
+	</div>
+
+	<!-- panel for creating a case -->
+	<div ng-if="caseFormDisplay" class="row">
+		<div class="col-xs-12 col-sm-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">Contact Us</div>
+				<div class="panel-body">
+					<form id="frmContact">
+						<div class="form-group">
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"
+										aria-hidden="true"></i></span> <input type="text"
+										class="form-control" name="name" id="name"
+										placeholder="John Doe" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-envelope" aria-hidden="true"></i></span> <input
+										type="text" class="form-control" name="email" id="email"
+										placeholder="john.doe@infogain.com" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-comment-o" aria-hidden="true"></i></span> <input
+										type="text" class="form-control" ng-model="config.params.q"
+										name="q" id="q" placeholder="Search query" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group col-sm-4"
+							ng-repeat="searchFilter in filterFields"
+							ng-if="searchFilter.children.length>0" jq-table
+							ng-if="filterFields[0].field">
+							<label class="control-label" for="{{searchFilter.field}}">{{searchFilter.field}}</label>
+							<select name="{{searchFilter.field}}" class="form-control"
+								ng-change="toggleAQ(searchFilter.field,temp[searchFilter.field].name)"
+								ng-model="temp[searchFilter.field]"
+								ng-options="option.name for option in searchFilter.children | filter: validSearchFilter">
+
+							</select>
+						</div>
+						<div id="n" style="display: block; padding-top: 71px;">
+							<div class="form-group">
+
+								<label class="control-label" for="comments">Comments</label>
+								<textarea class="form-control" name="comments" id="fComments"
+									placeholder="Problem Description"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary" ng-click="caseFormDestroy()">Create</button>
+							<button class="btn btn-default" ng-click="caseFormDestroy()">Cancel</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6" id="rslts">
+			<div class="list-group">
+				<div ng-repeat="record in details.response.docs"
+					ng-click="fetchDetail($index)" class="list-group-item">
+					<h4 class="group inner list-group-item-heading">
+						{{record.title}}</h4>
+					<rslt-meta rslt="record"></rslt-meta>
+					<p class="group inner list-group-item-text">
+						<rslt-excerpt rslt="record" highlight="details.highlighting"></rslt-excerpt>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div
+		ng-if="!caseFormDisplay && details.response.numFound > 0 && !detail"
+		class="row">
+		<div class="col-xs-12 col-sm-4 col-md-3 hidden-xs" id="filters">
+			<div class="panel panel-default" ng-if="recs" id="recs">
+				<div class="panel-heading">Recommended for you</div>
+				<!--<div class="list-group">
+					<a ng-click="fetchDetailRemote(record.id)" class="list-group-item" ng-repeat="record in recs.response.docs">{{record.title}} (<span ng-bind="formatDate(record.release_date) | date:'yyyy'"></span>) <img src="https://image.tmdb.org/t/p/w300/{{record.poster_path}}" alt="poster" class="pull-right" style="max-width: 25px" /></a>
+				</div>-->
+				<!--<div class="panel-body"><ul class="list-inline">
+					<li ng-repeat="record in recs.response.docs"><a ng-click="fetchDetailRemote(record.id)"><img src="https://image.tmdb.org/t/p/w300/{{record.poster_path}}" alt="poster" style="max-width: 45px" /></a><br />({{record.vote_average}}/10)</li>
+				</ul></div>-->
+				<div uib-carousel active="active" interval="recCaro.interval"
+					no-wrap="recCaro.wrap">
+					<div uib-slide ng-repeat="slide in recs.response.docs"
+						index="$index" style="height: 115px">
+						<a ng-click="fetchDetailRemote(slide.id)"> <img
+							ng-src="{{slide.thumbnailImage}}"
+							style="margin: auto; max-height: 150px">
+							<div class="carousel-caption">
+								<h4>{{slide.title}}</h4>
+								<!--<p ng-bind-html="movieStars(slide.vote_average)"></p>-->
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- This is used when filters are in a more usable from in the response -->
+			<div class="panel panel-default"
+				ng-repeat="searchFilter in details.facet_counts.facet_fields"
+				ng-if="searchFilter.children.length>0">
+				<div class="panel-heading">{{searchFilter.field}}</div>
+
+				<div class="list-group">
+					<a ng-click="toggleAQ(searchFilter.field,val.name)"
+						class="list-group-item"
+						ng-repeat="val in searchFilter.children | filter: validSearchFilter | limitTo: 5"
+						ng-class="{active: config.params.filterQuery.indexOf(val.name)>-1}">{{val.name}}
+						<span class="badge" ng-class="{'badge-warning': val.count>30}">{{val.count}}</span>
+					</a> <a class="list-group-item" data-toggle="modal"
+						data-target="#{{searchFilter.field}}"
+						ng-if="searchFilter.children.length>5">+ More</a>
+				</div>
+			</div>
+			<!-- This is used when filters are in the standard configuration -->
+			<div class="panel panel-default"
+				ng-repeat="(key, val) in details.facet_counts.facet_fields"
+				ng-if="val.length>0" jq-table
+				ng-if="details.facet_counts.facet_fields.kbType">
+				<div class="panel-heading">{{key}}</div>
+				<div class="list-group">
+					<a ng-click="toggleAQ(key,filter)" class="list-group-item"
+						ng-repeat="filter in val track by $index"
+						ng-class="{active: config.params.filterQuery.indexOf(filter)>-1}"
+						ng-if="$index % 2 == 0 && val[$index+1]>0"> {{filter}} <span
+						class="badge" ng-class="{'badge-warning': val[$index+1]>30}">{{val[$index+1]}}</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-8 col-md-9"
+			ng-if="config.pref.pageLayout=='normal'" id="rslts">
+			<div id="products" class="row list-group">
+
+				<div ng-repeat="record in details.response.docs"
+					ng-click="fetchDetail($index)"
+					class="item col-xs-4 col-lg-4 list-group-item">
+					<div class="thumbnail">
+						<img class="group list-group-image" src="{{record.largeImage}}"
+							alt="poster" style="max-width: 55px"
+							ng-if="record.largeImage && record.largeImage!=''" />
+						<div class="caption">
+							<h4 class="group inner list-group-item-heading">
+								{{record.title}}</h4>
+							<rslt-meta rslt="record"></rslt-meta>
+							<p class="group inner list-group-item-text">
+
+
+								<!--	
+						<div ng-repeat="shT in details.highlighting" class="row equal"  >
+									hahahahaha - 	{{shT.shortDescription}}
+						</div>
+						-->
+
+
+								<rslt-excerpt rslt="record" highlight="details.highlighting"></rslt-excerpt>
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-4">Displaying
+					{{config.params.start+1}} to {{pageMax()}} of
+					{{details.response.numFound}}
+					({{details.responseHeader.QTime/1000}} secs)</div>
+				<div class="col-xs-12 col-sm-8">
+					<div ng-show="details.response.numFound > config.params.count"
+						class="pull-right">
+						<ul uib-pagination total-items="total"
+							items-per-page="config.params.count"
+							ng-model="pagination.currentPage" ng-change="pageChanged()"
+							max-size="5" class="pagination-sm" rotate="true"
+							previous-text="&lsaquo;" next-text="&rsaquo;"
+							boundary-link-numbers="true"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-9"
+			ng-if="config.pref.pageLayout=='tiled'" id="rslts">
+			<div ng-repeat="record in details.response.docs" class="row equal"
+				ng-if="$index % 2 == 0">
+				<div class="col-sm-12 col-md-6">
+					<rslt-panel rslt="details.response.docs[$index+0]" pos="$index+0"
+						ng-if="details.response.docs[$index+0]"></rslt-panel>
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<rslt-panel rslt="details.response.docs[$index+1]" pos="$index+1"
+						ng-if="details.response.docs[$index+1]"></rslt-panel>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-4">Displaying
+					{{config.params.start+1}} to {{pageMax()}} of
+					{{details.response.numFound}}
+					({{details.responseHeader.QTime/1000}} secs)</div>
+				<div class="col-xs-12 col-sm-8">
+					<div ng-show="details.response.numFound > config.params.count"
+						class="pull-right">
+						<ul uib-pagination total-items="total"
+							items-per-page="config.params.count"
+							ng-model="pagination.currentPage" ng-change="pageChanged()"
+							max-size="5" class="pagination-sm" rotate="true"
+							previous-text="&lsaquo;" next-text="&rsaquo;"
+							boundary-link-numbers="true"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-if="details.response.numFound==0 && !detail" class="row">No
+		results found</div>
+	<div ng-if="detail" class="row">
+		<div class="{{detailCols.col1}}">
+			<div class="list-group" ng-if="details.response.numFound>1">
+				<a
+					ng-repeat="record in details.response.docs | limitTo: 5 : rsltsStart"
+					ng-click="fetchDetail(resultIndex(record.id))"
+					class="list-group-item" ng-class="{active:record.id===detail.id}">
+					{{record.title}} <!--(<span ng-bind="formatDate(record.release_date) | date:'yyyy'"></span>)-->
+				</a>
+			</div>
+		</div>
+		<div class="{{detailCols.col2}}">
+			<button class="btn btn-default" ng-click="detailClear()">
+				Close <i class="fa fa-times"></i>
+			</button>
+			<div class="row">
+				<div class="col-xs-8" id="movieDetail">
+					<h1>{{detail.title}}</h1>
+					<div class="meta">
+						<!-- <span ng-bind="formatDate(detail.release_date) | date:short"></span> | <span ng-bind-html="movieStars(detail.vote_average)"></span> -->
+					</div>
+					<div ng-bind-html="detail.body.longDescription"></div>
+					<dl>
+						<dt ng-if="detail.Brand">Brand</dt>
+						<dd ng-if="detail.Brand">{{detail.Brand}}</dd>
+						<dt ng-if="detail.Department">Department</dt>
+						<dd ng-if="detail.Department">{{detail.Department}}</dd>
+						<!-- <dd ng-if="detail.Subcategory1"><span >{{detail.Subcategory1}}</span></dd> -->
+						<!-- <dt ng-if="detail.Subcategory2">Subcategory2</dt><!--<dt ng-if="detail.Subcategory2.length()===1">Subcategory2</dt>-->
+						<!-- <dd ng-if="detail.Subcategory2"><span >{{detail.Subcategory2}}</span></dd> -->
+					</dl>
+				</div>
+				<div class="col-xs-4">
+					<div>
+						<img src="{{detail.largeImage}}" alt="poster"
+							class="pull-left poster img-responsive" ng-if="detail.largeImage" />
+					</div>
+					<br />
+					<div style="text-align: center;">
+						<i class="glyphicon glyphicon-link" class="hidden-xs"></i> <a
+							href="{{detail.productUrl}}" target="_blank"> View Product </a>
+					</div>
+					<!--
+						  <button class="btn btn-default" type="button" data-toggle="modal" data-target="#mTrailer">
+							<i class="glyphicon glyphicon-link" class="hidden-xs"></i> View Product                              
+						  </button>
+						  -->
+				</div>
+			</div>
+			<div ng-if="recs.response.docs">
+				<h4 style="font-size: 21px; font-weight: 600;">Recommendations</h4>
+				<ul class="list-inline" style="margin-left: -6%; min-width: 100%;">
+					<li ng-repeat="record in recs.response.docs" class="ng-scope"
+						style="text-align: center;" ng-if="record.largeImage!='null'"><a
+						ng-click="fetchDetailRemote(record.id)"> <img
+							src="{{record.largeImage}}" alt="{{record.title}}"
+							style="max-height: 120px; max-width: 200px"
+							title="{{record.title}}" /></a>
+						<hr style="margin-right: -9%;" /> <!--<span ng-bind-html="movieStars(record.vote_average)"></span>-->
+						<h3
+							style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: larger;">
+							{{record.title}}</h3></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+	<!-- MORE facets overlays -->
+
+	<div class="modal fade" tabindex="-1" role="dialog"
+		ng-repeat="searchFilter in details.facet_counts.facet_fields"
+		aria-labelledby="trailerModalLabel" aria-hidden="true"
+		id="{{searchFilter.field}}"
+		ng-if="details.facet_counts.facet_fields && !detail && searchFilter.children.length>0">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title pull-left">{{searchFilter.field}}</h4>
+
+					<button type="button" class="close pull-right" aria-label="Close"
+						data-dismiss="modal">
+						<span aria-hidden="true"><i
+							class="glyphicon glyphicon-remove"></i></span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div
+						ng-repeat="val in searchFilter.children | filter: validSearchFilter"
+						class="row equal" ng-if="$index % 3 == 0">
+						<div class="col-xs-12 col-sm-4"
+							ng-if="searchFilter.children[$index+0].name && searchFilter.children[$index+0].count>0">
+							<button class="btn btn-default"
+								ng-class="{active: config.params.filterQuery.indexOf(searchFilter.children[$index+0].name)>-1}"
+								ng-click="toggleAQ(searchFilter.field,searchFilter.children[$index+0].name)"
+								data-dismiss="modal">
+								{{searchFilter.children[$index+0].name}} <span class="badge">{{searchFilter.children[$index+0].count}}</span>
+							</button>
+						</div>
+						<div class="col-xs-12 col-sm-4"
+							ng-if="searchFilter.children[$index+1].name && searchFilter.children[$index+1].count>0">
+							<button class="btn btn-default"
+								ng-class="{active: config.params.filterQuery.indexOf(searchFilter.children[$index+1].name)>-1}"
+								ng-click="toggleAQ(searchFilter.field,searchFilter.children[$index+1].name)"
+								data-dismiss="modal">
+								{{searchFilter.children[$index+1].name}} <span class="badge">{{searchFilter.children[$index+1].count}}</span>
+							</button>
+						</div>
+						<div class="col-xs-12 col-sm-4"
+							ng-if="searchFilter.children[$index+2].name && searchFilter.children[$index+2].count>0">
+							<button class="btn btn-default"
+								ng-class="{active: config.params.filterQuery.indexOf(searchFilter.children[$index+2].name)>-1}"
+								ng-click="toggleAQ(searchFilter.field,searchFilter.children[$index+2].name)"
+								data-dismiss="modal">
+								{{searchFilter.children[$index+2].name}} <span class="badge">{{searchFilter.children[$index+2].count}}</span>
+							</button>
+						</div>
+					</div>
+
+					<!--<a  class="list-group-item"  ng-class="{active: config.params.filterQuery.indexOf(val.name)>-1}">{{val.name}} <span class="badge" ng-class="{'badge-warning': val.count>30}">{{val.count}}</span></a>-->
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- MOVIE trailer overlay -->
+	<div class="modal fade" tabindex="-1" role="dialog"
+		aria-labelledby="trailerModalLabel" aria-hidden="true" id="mTrailer"
+		ng-if="detail.trailerVideoUrl">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title pull-left">{{detail.title}}</h4>
+					<button type="button" class="close pull-right" aria-label="Close"
+						data-dismiss="modal">
+						<span aria-hidden="true"><i
+							class="glyphicon glyphicon-remove"></i></span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" width="560" height="315"
+							ng-src="{{trustSrc(detail.trailerVideoUrl[0])}}" frameborder="0"
+							allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog"
+		aria-labelledby="searchSettingsModalLabel" aria-hidden="true"
+		id="sSettings">
+		<form name="frmPref" id="fPref">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title pull-left">Search settings</h4>
+						<button type="button" class="close pull-right" aria-label="Close"
+							data-dismiss="modal">
+							<span aria-hidden="true"><i
+								class="glyphicon glyphicon-remove"></i></span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<dl>
+							<dd>
+								<button class="btn btn-success" ng-if="config.params.ml==false"
+									ng-model="config.params.ml" value="true"
+									ng-click="setParam('ml',true)">Enable ML</button>
+								<button class="btn btn-danger" ng-if="config.params.ml==true"
+									ng-model="config.params.ml" value="false"
+									ng-click="setParam('ml',false)">Disable ML</button>
+							</dd>
+							<dt>Sort by</dt>
+							<dd>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-default"
+										ng-click="setParam('sortField','score')"
+										ng-class="{'active': config.params.sortField == 'score'}">
+										<input type="radio" name="sortField"
+										ng-model="config.params.sortField" value="score"
+										autocomplete="off" />Most Relevant
+									</label> <label class="btn btn-default"
+										ng-click="setParam('sortField','title')"
+										ng-class="{'active': config.params.sortField == 'title'}">
+										<input type="radio" name="sortField"
+										ng-model="config.params.sortField" value="title"
+										autocomplete="off" />Name
+									</label>
+
+									<!--<label class="btn btn-default" ng-click="setParam('sortField','vote_average')" ng-class="{'active': config.params.sortField == 'vote_average'}">
+								<input type="radio" name="sortField" ng-model="config.params.sortField" value="vote_average" autocomplete="off" />Stars
+							</label>-->
+									<!--<label class="btn btn-default" ng-click="setParam('sortField','release_date')" ng-class="{'active': config.params.sortField == 'release_date'}">
+								<input type="radio" name="sortField" ng-model="config.params.sortField" value="release_date" autocomplete="off" />Date
+							</label>-->
+								</div>
+							</dd>
+							<dt>Results per page</dt>
+							<dd>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-default"
+										ng-click="setParam('count','10')"
+										ng-class="{'active': config.params.count == '10'}"> <input
+										type="radio" name="perPage" ng-model="config.params.count"
+										value="10" autocomplete="off" checked />10
+									</label> <label class="btn btn-default"
+										ng-click="setParam('count','25')"
+										ng-class="{'active': config.params.count == '25'}"> <input
+										type="radio" name="perPage" ng-model="config.params.count"
+										value="25" autocomplete="off" />25
+									</label> <label class="btn btn-default"
+										ng-click="setParam('count','50')"
+										ng-class="{'active': config.params.count == '50'}"> <input
+										type="radio" name="perPage" ng-model="config.params.count"
+										value="50" autocomplete="off" />50
+									</label> <label class="btn btn-default"
+										ng-click="setParam('count','100')"
+										ng-class="{'active': config.params.count == '100'}"> <input
+										type="radio" name="perPage" ng-model="config.params.count"
+										value="100" autocomplete="off" />100
+									</label>
+								</div>
+							</dd>
+							<dt>Layout</dt>
+							<dd>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-default"
+										ng-click="setParam('pageLayout','normal')"
+										ng-class="{'active': config.pref.pageLayout == 'normal'}"
+										tooltip-placement="bottom" uib-tooltip="Normal"> <input
+										type="radio" name="pageLayout"
+										ng-model="config.pref.pageLayout" value="normal"
+										autocomplete="off" checked /> <i
+										class="glyphicon glyphicon-th-list"></i>
+									</label> <label class="btn btn-default"
+										ng-click="setParam('pageLayout','tiled')"
+										ng-class="{'active': config.pref.pageLayout == 'tiled'}"
+										tooltip-placement="bottom" uib-tooltip="Tiled"> <input
+										type="radio" name="pageLayout"
+										ng-model="config.pref.pageLayout" value="tiled"
+										autocomplete="off" /> <i class="glyphicon glyphicon-th"></i>
+									</label>
+								</div>
+							</dd>
+							<dt>Width</dt>
+							<dd>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-default"
+										ng-click="setParam('container','container')"
+										ng-class="{'active': config.pref.container == 'container'}"
+										tooltip-placement="bottom"
+										uib-tooltip="Page has significant gutters at most screen widths">
+										<input type="radio" name="container"
+										ng-model="config.pref.container" value="container"
+										autocomplete="off" checked /> Inset
+									</label> <label class="btn btn-default"
+										ng-click="setParam('container','container-fluid')"
+										ng-class="{'active': config.pref.container == 'container-fluid'}"
+										tooltip-placement="right"
+										uib-tooltip="Small gutters at all screen widths"> <input
+										type="radio" name="container" ng-model="config.pref.container"
+										value="container-fluid" autocomplete="off" /> Full
+									</label>
+								</div>
+							</dd>
+							<dt>User</dt>
+							<dd>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-default" ng-click="setParam('user','1')"
+										ng-class="{'active': config.pref.user == '1'}"> <input
+										type="radio" name="perPage" ng-model="config.pref.user"
+										value="1" autocomplete="off" checked />Joe
+									</label> <label class="btn btn-default" ng-click="setParam('user','2')"
+										ng-class="{'active': config.pref.user == '2'}"> <input
+										type="radio" name="perPage" ng-model="config.pref.user"
+										value="2" autocomplete="off" />Ann
+									</label> <label class="btn btn-default" ng-click="setParam('user','3')"
+										ng-class="{'active': config.pref.user == '3'}"> <input
+										type="radio" name="perPage" ng-model="config.pref.user"
+										value="3" autocomplete="off" />SK
+									</label>
+								</div>
+							</dd>
+							<dt>Font size</dt>
+							<dd>
+								<input id="sFontSize" ng-model="config.pref.fontSize"
+									type="range" min="1" max="2" step="0.1" />
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog"
+		aria-labelledby="imgUploadModalLabel" aria-hidden="true"
+		id="imgUpload">
+		<form name="frmImgUpload" id="fImgUpload"
+			action="airest/services/image/upload" enctype="multipart/form-data">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title pull-left">Image Search</h4>
+						<button type="button" class="close pull-right" aria-label="Close"
+							data-dismiss="modal">
+							<span aria-hidden="true"><i
+								class="glyphicon glyphicon-remove"></i></span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div ng-class="fileUpload.input">
+							<input type="file" accept="image/*"
+								onchange="angular.element( this ).scope().uploadImg( this.files )">
+						</div>
+						<div ng-class="fileUpload.loader">
+							<div class="text-center">
+								<i class="fa fa-spinner fa-spin" style="font-size: 72px;"></i>
+							</div>
+						</div>
+						<div ng-class="fileUpload.statusError">There is an issue
+							with this file. Please upload another.</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

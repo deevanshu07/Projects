@@ -1,0 +1,8 @@
+<img src="https://image.tmdb.org/t/p/w300/{{rslt.poster_path}}" alt="poster" class="pull-left poster" ng-if="rslt.poster_path" />
+{{rslt.body.overview}}
+<dl>
+	<dt ng-if="rslt.spoken_languages_names">Language(s)</dt>
+	<dd ng-if="rslt.spoken_languages_names"><span ng-repeat="val in rslt.spoken_languages_names">{{val}}{{$last ? '' : ', '}}</span></dd>
+	<dt ng-if="rslt.genresNames">Genre(s)</dt>
+	<dd ng-if="rslt.genresNames"><span ng-repeat="val in rslt.genresNames">{{val}}{{$last ? '' : ', '}}</span></dd>
+</dl>

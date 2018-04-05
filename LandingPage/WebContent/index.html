@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Search::Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=PT+Sans"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body class="img-responsive loginbg">
+	<div class="container">
+
+
+		<div class="loginarea row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-3">
+				<img src="img/searchlogo.png" alt="login logo"
+					class="loginlogo img-responsive" />
+			</div>
+
+			<div class="logininput col-xs-8">
+				<div class="row">
+					<div class="col-xs-7 form-group">
+						<input type="text" class="form-control">
+					</div>
+					<div class="col-xs-1">
+						<a class="search-settings" href="#"> <span class="settingsbtn"></span>
+
+							<div class="searchsettings-popup">
+								<div class="arrowpopup fa fa-caret-up"></div>
+								<i class="searchsettingicon"></i>
+								<h1>Search Settings</h1>
+
+								<div class="searchsettingscontent">
+									<div class="mltoggle">
+										<button class="mltogglebtn disabled">Enable ML</button>
+
+									</div>
+
+									<div class="sortby">
+										<label>Sort By:</label>
+
+										<div class="sortby_inner">
+											<button>Most Relevent</button>
+											<button>Star</button>
+											<button>Date</button>
+										</div>
+
+
+									</div>
+
+
+									<div class="sortby resultsperpage">
+										<label>Results Per Page:</label>
+
+										<div class="sortby_inner">
+											<button>10</button>
+											<button>25</button>
+											<button>50</button>
+											<button>100</button>
+										</div>
+
+
+									</div>
+
+								</div>
+
+
+							</div>
+						</a>
+					</div>
+					<div class="col-sm-2">
+						<div class="row">
+							<button type="button" class="btn btn-primary"
+								style="margin-top: 18px; padding: 10px 15px; font-size: 17px; border-radius: 0 5px 5px 0;">Search</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<div class="recommended container ">
+<div class="row">
+<h1>Recommended For You</h1>
+<ul>
+<li><img src="img/m1.png"/></li>
+<li><img src="img/m2.png"/></li>
+<li><img src="img/m1.png"/></li>
+<li><img src="img/m2.png"/></li>
+<li><img src="img/m1.png"/></li>
+</ul>
+</div>
+</div> 
+	
+
+
+
+	<script type="text/javascript">
+		$(function() {
+
+			$(".search-settings").click(function() {
+				//alert("sdf");
+				$(this).find(".searchsettings-popup").on("click", function(e) {
+					e.stopPropagation();
+				})
+				if (!$(this).find(".searchsettings-popup").is(":visible")) {
+					$(this).find(".searchsettings-popup").fadeIn(100);
+					$(this).find(".searchsettings-popup").animate({
+						"top" : "65px"
+					}, 350);
+				} else {
+					$(this).find(".searchsettings-popup").animate({
+						"top" : "90px"
+					}, 350);
+					$(this).find(".searchsettings-popup").fadeOut(200);
+
+				}
+
+			});
+
+			$(".mltogglebtn").click(function() {
+				if ($(this).hasClass("disabled")) {
+					$(this).removeClass("disabled").addClass("enabled");
+				} else {
+					$(this).removeClass("enabled").addClass("disabled");
+				}
+			})
+
+			$.fn.switchactive = function(e) {
+				//alert("hihihi");
+				var def = {
+					activeclass : 'active',
+					inactiveclass : 'inactive',
+
+				};
+				var obj = $.extend(def, e);
+
+				var thiss = $(this);
+				thiss.addClass("switchactive");
+				$(this).find("button").addClass("" + obj.inactiveclass + "")
+				$(this).find("button").on(
+						"click",
+						function() {
+							thiss.find("button").removeClass(
+									"" + obj.activeclass + "").addClass(
+									"" + obj.inactiveclass + "");
+							if ($(this).hasClass("" + obj.inactiveclass + "")) {
+								//alert(1);
+
+								$(this)
+										.removeClass(
+												"" + obj.inactiveclass + "")
+										.addClass("" + obj.activeclass + "")
+
+							} else {
+								//alert(2);
+								$(this).removeClass("" + obj.activeclass + "")
+										.addClass("" + obj.inactiveclass + "")
+							}
+
+						});
+
+			}
+
+			$(".sortby_inner").switchactive();
+
+		});
+	</script>
+
+</body>
+</html>

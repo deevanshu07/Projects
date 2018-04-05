@@ -1,0 +1,1 @@
+<div class="meta"><span ng-bind="formatDate(rslt.dt) | date:short"></span> <i class="fa fa-video-camera" ng-if="rslt.docType=='Video'"></i></div>

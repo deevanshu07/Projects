@@ -1,0 +1,39 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.net.URLDecoder"%>
+<%@page import="javax.ws.rs.core.Response"%>
+<%@page import="javax.ws.rs.client.WebTarget"%>
+<%@page import="javax.ws.rs.client.ClientBuilder"%>
+<%@page import="javax.ws.rs.client.Client"%>
+<%@page import="javax.xml.parsers.DocumentBuilder"%>
+<%@page import="javax.xml.parsers.DocumentBuilderFactory"%>
+<%@page import="org.xml.sax.InputSource"%>
+<%@page import="java.io.*"%>
+<%@page import="org.w3c.dom.Document"%>
+<%@page import="org.w3c.dom.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<%
+//out.println("ID : "+request.getParameter("id"));
+
+Client client=ClientBuilder.newClient();
+WebTarget webTarget = client.target("http://localhost:8983/solr/lithium/select")
+.queryParam("q", "id:"+request.getParameter("id"))
+.queryParam("wt","json").queryParam("indent","on");
+System.out.println(webTarget);
+Response response2=webTarget.request().get();
+String serverResponse=response2.readEntity(String.class);
+//System.out.println("Response from Response"+serverResponse);
+out.println(serverResponse);
+%>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(function(){
+	
+	var response = <%=serverResponse%>;
+	
+	
+});	
+
+</script>

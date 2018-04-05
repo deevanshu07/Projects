@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="classes" path="java"/>
+	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/AnswerFlowCore-8.6.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/AnswerFlowEntityModel-8.6.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/ProcessModelServices-8.6.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/SampleServiceCalls-8.6.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/activation-1.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/analytics-messages-8.6.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/asm-3.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/axis-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/axis-jaxrpc-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/axis-saaj-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/axis-wsdl4j-1.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/cglib-2.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/commons-discovery-0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/freemarker-2.3.16.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/gson-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/guava-10.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/imfoundation-8.6.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/infra-8.6.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/infra_encryption-8.6.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/itoobjects-8.6.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/jackson-core-asl-1.9.6.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/jackson-mapper-asl-1.9.6.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/javaclientlibrary-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/javax.inject-1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/jaxrpc-api-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/jcl-over-slf4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/json-20090211.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/jsr305-1.3.9.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/ojdbc6-11.2.0.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/oraclepki-11.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/osdt_cert-3.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/osdt_core-3.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/saaj-api-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/serializer-2.7.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-aop-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-asm-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-beans-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-context-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-context-support-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-core-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-expression-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-jdbc-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-security-config-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-security-core-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-security-crypto-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-security-web-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-tx-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-web-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/spring-webmvc-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/trove-2.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/xalan-2.7.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/xercesImpl-2.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/xmemcached-1.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/xml-apis-1.3.04.jar"/>
+	<classpathentry kind="lib" path="C:/Oracle/Knowledge/AnswerFlow/Sample/SampleUI/lib/xmlParserAPIs-2.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deevanshu.mahajan/AppData/Roaming/Skype/My Skype Received Files/lib/lib/javax.servlet-api-3.0.1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

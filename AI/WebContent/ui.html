@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Netapp Support</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"/>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://use.fontawesome.com/68d3820c49.js"></script>
+	<script src = "https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/util/function.js"></script>
+	<script src="js/filter/filters.js"></script>
+	<script src="js/services/webservice.js"></script>
+	<script src="js/controller/Searchcontroller.js"></script>
+ 
+<script>
+
+$(document).ready(function(){
+    	$("#filter").click(function(){
+        $("#slider").toggleClass("panelslide");
+    	});
+	
+	$("#acc-header-1").click(function(){
+		$("#acc-header-2 i").removeClass("fa-angle-down");
+		$("#acc-header-3 i").removeClass("fa-angle-down");
+		
+			$(".p-hide").addClass("p-open");
+			$(".p-hide2, .p-hide3 ").removeClass("p-open");
+			});
+			
+			$("#acc-header-2").click(function(){
+			$("#acc-header-2 i").addClass("fa-angle-down");
+			$("#acc-header-3 i").removeClass("fa-angle-down");
+			$(".p-hide2").addClass("p-open");
+			$(".p-hide, .p-hide3").removeClass("p-open");			
+			});
+			
+			$("#acc-header-3").click(function(){
+				$("#acc-header-3 i").addClass("fa-angle-down");
+				$("#acc-header-2 i").removeClass("fa-angle-down");
+						$(".p-hide3").addClass("p-open");
+			$(".p-hide2, .p-hide ").removeClass("p-open");
+			});
+				
+		$("#filter").click(function(){
+        $("#filter i").toggleClass("fa-filter");
+    	});
+		 
+		 $("#filter").click(function(){
+         $("#right_panel_slide").toggleClass("panelslide_right");
+    	});
+	
+		 $("#normal_view").click(function(){
+       	 $("#normal_view").addClass("active");
+		 $("#grid_view_btn").removeClass("active");
+		 $(".right_panel_box").removeClass("grid_view");
+		
+		});
+
+         $("#grid_view_btn").click(function(){
+         $(".right_panel_box").addClass("grid_view");
+		 $("#grid_view_btn").addClass("active");
+		 $("#normal_view").removeClass("active");
+		
+		 });
+		
+		
+		
+		$('.all_input').bind('click', function () {
+		  if ($('input[type=checkbox]').attr('checked')) {
+        $('input[type=checkbox').removeAttr('checked');
+    } else {
+        $('input[type=checkbox').attr('checked','checked');
+    }
+		 });
+		 
+		 
+		
+		 $('.first_input').bind('click', function () {
+		  if ($('.first_child_input').attr('checked')) {
+        $('.first_child_input').removeAttr('checked');
+    } else {
+        $('.first_child_input').attr('checked','checked');
+    }
+		 });
+		 
+		  $('.secound_input').bind('click', function () {
+		  if ($('.secound_child_input').attr('checked')) {
+        $('.secound_child_input').removeAttr('checked');
+    } else {
+        $('.secound_child_input').attr('checked','checked');
+    }
+		 });
+		 });
+		
+		
+</script>
+</head>
+
+<body data-ng-app="solr" data-ng-controller="Searchcontroller">
+<div class="Main_Support_panel">
+<header>
+<div class="header_content">
+<div class="logo"><img src="images/netapp_support_logo.jpg" width="242" height="41" alt="Netapp_logo" /></div>
+<div class="navigation">
+<ul>
+<li><a href="#">Products</a></li>
+<li><a href="#">Downloads</a></li>
+<li><a href="#">Tools</a></li>
+<li><a href="#">Documentation</a></li>
+
+</ul>
+</div>
+
+<div class="register_login">
+<div class="register">Register Now</div>
+<div class="login">Login</div>
+</div></div>
+<div class="content_top_area">
+<div class="filter_area filter_partition_area"><a id="filter" class="filter-btn"><i  class="fa fa-filter fa-times" aria-hidden="true"></i></a></div>
+<div class="filter_partition_area"><div class="merge_area"><input type="text" size="16" placeholder="Search"/>
+<select>
+  <option value="volvo">All Categories</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+<button class="search_btn" ><i class="fa fa-search"></i> </button>
+                                                            </span></div></div>
+
+</div>
+</header>
+<div class="content_container">
+
+
+<div class="right_left_panel">
+<div class="left_panel" id="slider">
+
+<div class="acc-toggle">
+<div >
+<h3 id="acc-header-1"><input class="all_input2222" type="checkbox" name="level-111">All</input></h3>
+<h3 id="acc-header-1"><input class="all_input" type="checkbox" name="level-1" data-ng-click="fetchResultForFacet('')" data-ng-checked="facet == ''">All</input><span class="pull-right">({{kbTypeFacet|totalDocument}})</span></h3>
+</div>
+<div>
+<label class="labelStyle" data-ng-repeat="facet in kbTypeFacet" data-ng-show="facet.val != 0"><input type="checkbox" value="" data-ng-click="insertKBFacet(facet.name)" data-ng-checked="facet.name|isFacetChecked:selectedKBFacet">{{facet.name}}<span class="pull-right">({{facet.val}})</span></label>
+<h3 id="acc-header-2"><input class="first_input" type="checkbox" name="level-1">Documentation</input><i class="fa fa-angle-right " aria-hidden="true"></i></h3>
+<ul class="p-hide2"><li><input class="first_child_input" type="checkbox" name="level-3">Traige Template</input></li>
+                <li><input class="first_child_input" type="checkbox" name="level-3">Technical Solutions</input></li>
+                <li><input  class="first_child_input"type="checkbox" name="level-3">Other</input></li>
+                <li><input class="first_child_input" type="checkbox" name="level-3">Solutions</input> </li></ul>
+</div>
+<div>
+<h3  id="acc-header-3"><input class="secound_input" type="checkbox" name="level-1">Knowledgebase</input><i   class="fa  fa-angle-right " aria-hidden="true"></i></h3>
+<ul class="p-hide3"><li><input class="secound_child_input" type="checkbox" name="level-3">Traige Template</input></li>
+                <li><input class="secound_child_input" type="checkbox" name="level-3">Technical Solutions</input></li>
+                <li><input  class="secound_child_input"type="checkbox" name="level-3">Other</input></li></ul>
+</div>
+</div>
+      
+                                  
+               
+      
+</div>
+<div class="right_panel" id="right_panel_slide">
+<div class="right_panel_top">
+<div class="page-breadcrumbs">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item active">Search - Windows</li>
+</ol>
+</div>
+<div class="content_header_panel"> 
+<div class="search_text">
+<p class="search_results">Search Results for Windows</p>
+<p>Showing Result 1-8 of 8000</p>
+</div>
+</div>
+<div class="content_header_panel_right">
+<div class="galery_change_icon">
+<span><i id="normal_view" class="fa fa-list active" aria-hidden="true"></i></span>
+<span><i id="grid_view_btn" class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+</div>
+<div class="sort_area">
+<span>Sort By</span>
+<ul>
+<li><a href="#">Most Recent</a></li>
+<li class="active"><a href="#">Most Revelent</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+<div class="panel_area">
+
+<div class="right_panel_box" data-ng-repeat="doc in documentList">
+    <a href="{{doc.docId}}"  data-ng-if="!(doc.docId | isUrl)" target="_blank"  style="text-decoration: none"><h2 class="window_heading" data-ng-bind-html="highlight | extractTitle:doc.docId:doc.title" data-ng-click="clickThrough($index+1+start,doc.title,doc.docId,101)"></h2></a>
+	<p><span class="_mb" ng-show='{{doc["[elevated]"]}}'> Ad</span> <b>Type:</b> {{doc.docType}} | <b>Score:</b> {{doc.score}} | <b>Date:</b> {{doc.dateCreated | date}} | <b>Rating:</b> {{doc.rating}}</p>
+	<p data-ng-bind-html="highlight | extractContent:doc.docId:doc.content">{{doc.content[4]}}</p>	
+	<p class="secound_heading">&nbsp;</p>
+	<ul>
+		<li><img src="images/adobe.PNG"/></li>
+		<li><img src="images/embaded.PNG"/></li>
+		<li><img src="images/excel.PNG"/></li>
+		<li><img src="images/popup.PNG"/></li>
+	</ul>			
+</div>
+
+<!--
+<div class="right_panel_box">
+<span class="box-date">Updated on 2017-01-11</span>
+<h2 class="window_heading">Windows window</h2>
+<p>You can use the <strong>Windows window</strong> to maintain a list to <strong>local windows users</strong> and groups for each You can use the <strong>local Window</strong>. You can use the Windows window to maintain a list to local windows users and groups for each You can use the <strong>local Window</strong>......</p>
+<p class="secound_heading">ONTAP* 9.0 Cluster Management Using OnCommand* System Manager</p>
+<ul>
+<li><img src="images/adobe.PNG"></li>
+<li><img src="images/embaded.PNG"></li>
+<li><img src="images/excel.PNG"></li>
+<li><img src="images/popup.PNG"></li>
+</ul>
+<p>Applicable Products are <span>ONTAP 9</span></p>
+<p><span>Administration Guide in <span>Product Documentation</span></p>
+</div>
+-->
+
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<footer>
+<div class="navigation_footer">
+<ul>
+<li>Contact Us</li>
+<li>How To Buy</li>
+<li>Feedback</li>
+<li>Careers</li>
+<li>Browser Policy</li>
+<li>Legal</li>
+<li>Privacy Policy</li>
+<li>Enviournmental Complaince</li>
+<li>Subscriptions</li>
+</ul>
+</div>
+<div style="clear:both">
+<span class="copyright">@2107 NetApp</span>
+<span class="social_media"><ul>
+<li><i class="fa fa-weixin" aria-hidden="true"></i></li>
+<li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+<li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+<li><i class="fa fa-linkedin" aria-hidden="true"></i></li>
+<li><i class="fa fa-youtube" aria-hidden="true"></i></li>
+</ul></span>
+</div>
+</footer>
+
+</body>
+</html>

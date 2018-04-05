@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="bin" path="src"/>
+	<classpathentry kind="src" output="bin" path="conf"/>
+	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/axis.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/beanio-2.0.0.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/commons-discovery-0.2.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/dom4j-1.6.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/imwsclient-8.4.2.2.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/jaxrpc.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/jsch-0.1.51.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/mail-1.4.3.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/nekohtml.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/poi-3.9.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/poi-ooxml-3.9.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/poi-ooxml-schemas-3.7-beta1.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/serializer-2.7.0.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/wsdl4j-1.5.1.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="D:/SmartImport/SmartImport/lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
