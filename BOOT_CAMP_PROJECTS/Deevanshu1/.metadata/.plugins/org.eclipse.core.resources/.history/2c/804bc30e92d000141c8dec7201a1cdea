@@ -1,0 +1,64 @@
+package com.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import com.items.Items;
+import com.session.*;
+
+
+public class Queueservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Queueservlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id=Integer.parseInt(request.getParameter("id"));
+		String name=request.getParameter("name");
+		PrintWriter pw=response.getWriter();
+		pw.println(id);
+		pw.print(name);
+		
+		
+		Items item= new Items();
+		item.setItemId(id);
+		item.setItemName(name);
+		
+		InitialContext ic;
+		
+		try 
+		{
+			ic= new InitialContext();
+			AddItemsRemote remote=(AddItemsRemote)ic.lookup("AddItems/remote");
+			remote.addItem(item);
+			
+		
+			
+		} 
+		catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+}

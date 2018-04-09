@@ -1,0 +1,32 @@
+
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="mypack.Emp" table="hbr_emp">
+<id name="id">
+<generator class="increment"/>
+</id>
+<property name="name"/>
+<property name="job"/>
+
+</class>
+
+
+<query name="getAllEmp">
+<![CDATA[from Emp e]]>
+</query>
+ 
+ <query name="findEmployeeByName">
+<![CDATA[from Emp e where e.name = :name]]>
+</query>
+
+
+</hibernate-mapping>
+
+
+
+
+
+
+

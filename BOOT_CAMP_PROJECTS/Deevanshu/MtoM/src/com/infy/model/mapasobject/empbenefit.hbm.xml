@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.infy.model.mapasobject">
+<class name="Employee"
+table="bb_employee">
+<id name="id">
+<generator class="native"/>
+</id>
+<map name="benefits"
+table="bb_employee_benefit" cascade="all">
+<key column="parent_id"/>
+<index column="benefit_name" type="string"/>
+<many-to-many column="benefit_id" class="Benefit"/>
+</map>
+<property name="name" type="string"/>
+</class>
+<class name="Benefit"
+table="bb_benefit">
+<id name="id">
+<generator class="native"/>
+</id>
+<property name="cost" type="int"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+package com.soft.liste;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+/**
+ * Application Lifecycle Listener implementation class Listener
+ *
+ */
+public class Listener implements ServletContextListener {
+
+    /**
+     * Default constructor. 
+     */
+    public Listener() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+     * @see ServletContextListener#contextInitialized(ServletContextEvent)
+     */
+    public void contextInitialized(ServletContextEvent arg0) 
+    {
+    	System.out.println("Listener Initialized");
+    	ServletContext ctx =arg0.getServletContext();
+    	String deevanshu=ctx.getInitParameter("deevanshu");
+    	ctx.setAttribute("deevanshu",deevanshu);
+    	
+    	
+    	System.out.println(itemList);
+        
+    }
+
+	
+    public void contextDestroyed(ServletContextEvent arg0)
+    {
+        // TODO Auto-generated method stub
+    }
+	
+}

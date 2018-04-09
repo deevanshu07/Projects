@@ -1,0 +1,31 @@
+package com.topic;
+
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+
+/**
+ * Message-Driven Bean implementation class for: Topic1
+ */
+@MessageDriven(
+		activationConfig = { @ActivationConfigProperty(
+				propertyName = "destinationType", propertyValue = "javax.jms.Topic"), @ActivationConfigProperty(
+				propertyName = "destination", propertyValue = "topic/demoTopic")
+		}, 
+		mappedName = "topic/demoTopic")
+public class Topic1 implements MessageListener {
+
+   
+    public Topic1() {
+       
+    }
+	
+	
+    public void onMessage(Message message) 
+    {
+       System.out.println("Topic 1 is Initialized");
+        
+    }
+
+}

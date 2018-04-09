@@ -1,0 +1,19 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="test" extends="struts-default">
+		<action name="getitems" class="com.info.model.ApplicationController">
+			<result name="success">/Home.jsp</result>
+			<result name="none">/fail.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action> 
+			<action name="additem" class="com.info.model.AddItems">
+			<result name="success">/Home1.jsp</result>
+			<result name="none">/fai1l.jsp</result>
+			<result name="input">/index1.jsp</result>
+		</action>
+	</package>
+</struts>

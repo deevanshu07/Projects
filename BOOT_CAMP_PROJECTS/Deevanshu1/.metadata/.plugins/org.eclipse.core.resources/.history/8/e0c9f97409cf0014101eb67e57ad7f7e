@@ -1,0 +1,12 @@
+package com.soft.product;
+
+import java.util.List;
+
+import javax.ejb.Remote;
+
+@Remote
+public interface ProductSessionBeanRemote 
+{
+	public List allProducts();
+
+}

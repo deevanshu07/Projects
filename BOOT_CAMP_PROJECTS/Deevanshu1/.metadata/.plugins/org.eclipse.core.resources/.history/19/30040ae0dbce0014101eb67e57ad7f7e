@@ -1,0 +1,31 @@
+package com.soft.ejb.mdb;
+
+import javax.annotation.Resource;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.sql.DataSource;
+
+@MessageDriven(
+		activationConfig = { @ActivationConfigProperty(
+				propertyName = "destinationType", propertyValue = "javax.jms.Queue"), @ActivationConfigProperty(
+				propertyName = "destination", propertyValue = "queue/orderQueue")
+		}, 
+		mappedName = "queue/orderQueue")
+public class ProcessedOrderBean implements MessageListener {
+
+	@Resource(mappedName="java:OracleDS")
+    DataSource ds;
+    public ProcessedOrderBean() 
+    {
+        
+    }
+	
+    public void onMessage(Message message) 
+    {
+        
+        
+    }
+
+}

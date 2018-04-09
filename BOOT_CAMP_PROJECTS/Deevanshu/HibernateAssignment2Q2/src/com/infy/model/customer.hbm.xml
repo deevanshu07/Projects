@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+
+<hibernate-mapping>
+	<class name="com.infy.model.Reply" table="r1_table">
+		<id name="replyId">
+			<generator class="increment" />
+		</id>
+		<property name="replyname" />
+		<property name="SendBy" />
+	</class>
+	
+	
+	<class name="com.infy.model.Post" table="p_table">
+		<id name="postId">
+			<generator class="increment" />		
+		</id>
+		
+		<property name="postName" />
+		<list name="reply1" cascade="all" table="r1_table">
+			<key column="postId"></key>
+			<index column="Id_index"></index>
+			<one-to-many class="com.infy.model.Reply"/>
+		</list>
+	</class>
+
+	
+</hibernate-mapping>

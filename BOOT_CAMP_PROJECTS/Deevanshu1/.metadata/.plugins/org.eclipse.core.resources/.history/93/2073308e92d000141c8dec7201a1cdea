@@ -1,0 +1,45 @@
+package com.session;
+
+import javax.annotation.Resource;
+import javax.ejb.Stateless;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.naming.InitialContext;
+import javax.persistence.EntityManager;
+import javax.persistence.MappedSuperclass;
+
+import com.items.Items;
+
+
+@Stateless
+public class AddItems implements AddItemsRemote, AddItemsLocal {
+
+    
+    public AddItems() 
+    {
+       
+    }
+
+
+
+
+	@Override
+	public int addItem(Items item) 
+	{
+		Context ic=null;
+		ConnectionFactory cf=null;
+		Connection connection;
+		try
+		{
+			ic=new InitialContext();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error");
+		}
+		
+		return 1;
+	}
+	
+
+}

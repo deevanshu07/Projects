@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+
+<hibernate-mapping package="com.infogain.model">
+
+<class name="Person" table="bct_person1" discriminator-value="P">
+
+<id name="id" column="emp_id">
+<generator class="native"/>
+</id>
+<discriminator column="entity_type"/>
+<property name="name" column="emp_name"/>
+
+<subclass name="Employee" discriminator-value="E">
+<property name="designation"/>
+<property name="salary"/>
+</subclass>
+
+<subclass name="Student" discriminator-value="S">
+<property name="course"/>
+<property name="fee"/>
+</subclass>
+
+</class>
+</hibernate-mapping>

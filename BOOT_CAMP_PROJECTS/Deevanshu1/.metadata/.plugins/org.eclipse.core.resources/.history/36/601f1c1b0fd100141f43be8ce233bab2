@@ -1,0 +1,75 @@
+package com.soft.servlet;
+
+import java.io.IOException;
+
+import javax.ejb.EJB;
+import javax.naming.InitialContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import com.soft.data.PropertyObject;
+import com.soft.ejb.PassivationBeanRemote;
+
+public class PassivationServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public PassivationServlet() {
+        super();
+    }
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+			System.out.println("Hello from Servlet");
+
+			InitialContext ic;
+
+			PassivationBeanRemote passivation;
+
+			String beanCountparam = request.getParameter("count");
+
+			if (beanCountparam != null) {
+				int beanCount = Integer.parseInt(beanCountparam);
+
+				try {
+					ic = new InitialContext();
+					for (int i = 0; i < beanCount; i++) {
+
+						passivation = (PassivationBeanRemote) ic
+								.lookup("PassivationBean/remote");
+
+						passivation.setPropertyObject(new PropertyObject(
+								"bean" + i));
+						System.out.println(i);
+
+						request.getSession().setAttribute("bean" + i,passivation);
+					}
+				} catch (Exception e) {
+					throw new ServletException(e);
+				}
+			}
+
+			String beanActivationIndex = request.getParameter("activate");
+
+			if (beanActivationIndex != null) {
+				try {
+					ic = new InitialContext();
+
+					passivation = (PassivationBeanRemote) request.getSession().getAttribute("bean" + beanActivationIndex);
+
+					System.out.println("TestObject property value: "
+							+ passivation.getPropertyObject().getProperty());
+
+				} catch (Exception e) {
+					throw new ServletException(e);
+				}
+			}
+		}
+
+		protected void doPost(HttpServletRequest request,
+				HttpServletResponse response) throws ServletException, IOException {
+		}
+
+	}

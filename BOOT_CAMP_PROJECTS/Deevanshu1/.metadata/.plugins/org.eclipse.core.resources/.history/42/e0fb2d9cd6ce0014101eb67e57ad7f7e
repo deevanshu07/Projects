@@ -1,0 +1,9 @@
+package com.soft.domain;
+
+public class Order 
+{
+	String orderType;
+	String orderDate;
+	String orderAmount;
+
+}

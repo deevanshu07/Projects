@@ -1,0 +1,140 @@
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Date;
+ class Order {2
+
+	 MenuClass menu = new MenuClass();
+	
+	 itemClass item = new itemClass();
+		Date orderDate = new Date();
+		int d= orderDate.getHours()*3600+orderDate.getMinutes()*60+orderDate.getSeconds();
+		  int price=0;
+		  int time=0;
+		static int i=0;
+		
+		
+		
+		static ArrayList<itemClass> orderCart2 = new ArrayList <itemClass>();
+		static int tokenNumber=++i;
+		
+		static ArrayList <itemClass> order_time = new ArrayList<itemClass>() ;
+		void byid( int id2)
+		{
+		
+	
+		orderDate= new Date();
+		
+		
+		for(int i=0;i<menu.orderCart.size();i++)
+		{
+			
+			time=0;
+			if(id2==(menu.orderCart.get(i).getItemId()))
+			{
+				
+				
+				System.out.println("Item Id= "+menu.orderCart.get(i).getItemId()
+						+"\n"+"Item Name="+menu.orderCart.get(i).getItemName()+
+						"\n"+"Item Preparation Time="+menu.orderCart.get(i).getItemPrepTime()
+						+"\n"+"Item Price"+menu.orderCart.get(i).getPrice());
+				
+				
+				itemClass item = new itemClass
+			(menu.orderCart.get(i).getItemId(),menu.orderCart.get(i).getItemName(),menu.orderCart.get(i).getItemPrepTime()
+					,menu.orderCart.get(i).getPrice());
+			
+				
+				
+				System.out.println("Token number="+tokenNumber+" is Under Processing");
+				
+				System.out.println("Order Date ="+orderDate);
+				System.out.println("\n");
+				orderCart2.add(item);
+				System.out.println(orderCart2.get(i).getItemId());
+				System.out.println("Order is placed at"+d);
+				itemClass item1 = new itemClass(d);
+				
+				order_time.add(item1);
+				
+				
+				
+				time+=(menu.orderCart.get(i).getItemPrepTime());
+				price+=menu.orderCart.get(i).getPrice();
+				
+					
+			}
+		
+		}
+		
+		System.out.println(price  +   time);
+		
+		
+		}
+			
+		
+			
+	
+		
+		
+	
+
+
+		
+
+
+		
+		
+	
+		
+		void byname(String name)
+		{
+			
+			
+			orderDate= new Date();
+			
+			
+			for(int i=0;i<3;i++)
+			{
+				if(name.equalsIgnoreCase(menu.orderCart.get(i).getItemName()))
+				{
+					
+					
+					System.out.println("Item Id= "+menu.orderCart.get(i).getItemId()
+							+"\n"+"Item Name="+menu.orderCart.get(i).getItemName()+
+							"\n"+"Item Preparation Time="+menu.orderCart.get(i).getItemPrepTime()
+							+"\n"+"Item Price"+menu.orderCart.get(i).getPrice());
+					
+					
+					itemClass item = new itemClass
+				(menu.orderCart.get(i).getItemId(),menu.orderCart.get(i).getItemName(),menu.orderCart.get(i).getItemPrepTime()
+						,menu.orderCart.get(i).getPrice());
+				
+					
+					
+					System.out.println("Token number="+tokenNumber+++" is Under Processing");
+					
+					System.out.println("Order Date ="+orderDate);
+					System.out.println("\n");
+					orderCart2.add(item);
+					System.out.println(orderCart2.get(i).getItemId());
+					
+					
+					time+=(menu.orderCart.get(i).getItemPrepTime());
+					price+=menu.orderCart.get(i).getPrice();
+					
+					
+			}
+		
+		}
+		
+			System.out.println(price+time);
+			
+			
+		
+
+		}}
+ 
+		
+
+
+ 

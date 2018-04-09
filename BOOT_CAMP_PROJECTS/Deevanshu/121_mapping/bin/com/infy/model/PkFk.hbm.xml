@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.infy.model.HeadOfState" table="b_hos">
+		<id name="id" type="int">
+			<generator class="increment" />
+		</id>
+		<property name="title"/>
+		<property name="name"/>
+	</class>
+	
+	
+	
+	<class name="com.infy.model.Country" table="b_country" >
+		<id name="id" type="int">
+			<generator class="increment" />
+		</id>
+		<property name="name"/>
+		<many-to-one name="hos" class="com.infy.model.HeadOfState" 
+		cascade="all" unique="true" column="hos_id" fetch="join"/>
+	</class>
+</hibernate-mapping>
+
+
+
+
+
+
+
+
+

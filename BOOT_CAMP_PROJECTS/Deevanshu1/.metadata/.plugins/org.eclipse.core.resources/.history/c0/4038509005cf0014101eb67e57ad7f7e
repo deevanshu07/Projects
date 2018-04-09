@@ -1,0 +1,18 @@
+package com.soft.product;
+
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class ProductSessionBean
+ */
+@Stateless
+public class ProductSessionBean implements ProductSessionBeanRemote, ProductSessionBeanLocal {
+
+    /**
+     * Default constructor. 
+     */
+    public ProductSessionBean() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

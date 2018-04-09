@@ -1,0 +1,18 @@
+package com.session;
+
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class AddItems
+ */
+@Stateless
+public class AddItems implements AddItemsRemote, AddItemsLocal {
+
+    /**
+     * Default constructor. 
+     */
+    public AddItems() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

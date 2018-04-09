@@ -1,0 +1,50 @@
+import java.util.*;
+
+
+
+
+
+public class Queue 
+{
+	static int order1,diff,diff2;
+void waitingTime( int i)
+{
+	
+	
+	Date date = new Date();
+	Order order = new Order();
+	MenuClass menu= new MenuClass();
+	 
+	 
+	int j=i;
+	
+	for( int k=0;k<order.orderCart2.size();k++)
+	{
+		
+		order1=order.orderCart2.get(i).getItemId();
+		
+		if(order1==j)
+		{
+			 diff=order.order_time.get(i).getDate();
+			 
+			
+			if(order.order_time.get(i).getDate()>date.getHours()*3600+date.getMinutes()*60+date.getSeconds())
+			{
+				System.out.println("Item Not Ready! Wait ");
+			}
+			
+			else
+			{
+				System.out.println("Item Ready");
+			}
+		}
+		
+	}
+		   
+	}	
+			
+	
+}		
+	
+
+

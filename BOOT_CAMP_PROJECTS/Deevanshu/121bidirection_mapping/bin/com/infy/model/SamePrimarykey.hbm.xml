@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.infy.model.HeadOfState" table="a_hos">
+		<id name="id" type="int">
+			<generator class="increment" />
+		</id>
+		<property name="title" />
+		<property name="name" />
+		<one-to-one name="country"/>
+	</class>
+
+	<class name="com.infy.model.Country" table="a_country">
+		<id name="id" type="int">
+			<generator class="foreign">
+				<param name="property">hos</param>
+			</generator>
+		</id>
+		<property name="name" />
+		<one-to-one name="hos" class="com.infy.model.HeadOfState"
+			cascade="all" />
+	</class>
+
+</hibernate-mapping>
+		
+	

@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+      <%@page import="java.util.*" %>
+    <%@page import="com.soft.model.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body bgcolor="pink">
+
+<center>
+<h1> TOTAL ITEMS SELECTED</h1>
+    
+    <table align="center" >
+  <tr align="center" bgcolor="yellow" height="20" >
+    <th>ORDER ID</th>
+    <th>ORDER NAME</th>
+    <th>DATE</th>
+    <th>Link</th>
+   
+  </tr>
+  
+  <%
+  ArrayList<Order> al=(ArrayList<Order>)session.getAttribute("cart");
+  for(Order p:al){
+  %>
+  <tr align="center" bgcolor="orange">
+     <td><%out.println(p.getOrderId()); %></td>
+    <td><%out.println(p.getOrderDetail()); %></td>
+    <td><%out.println(p.getOrderdate()); %></td>
+    <td><a href="#"><input type="button" name="<% out.println(p.getOrderId());%>" value="finalize"/></a></td>
+    
+  </tr>
+  <%} %>
+</table><br><br>
+<a href="Client.jsp"><input type="button" value="ORDER MORE PRODUCT"/> </a><br><br>  
+
+  </center>
+
+
+</body>
+</html>

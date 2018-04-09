@@ -1,0 +1,51 @@
+package com.soft.classes;
+
+public class Complaint 
+{
+	static int complaintId;
+	String name;
+	String mobileNumber;
+	String AreaOfIncedence;
+	
+	
+	
+	public Complaint(int id,String name, String mobileNumber, String areaOfIncedence) 
+	{
+		super();
+		this.id=id++;
+		this.name = name;
+		this.mobileNumber = mobileNumber;
+		AreaOfIncedence = areaOfIncedence;
+	}
+	
+	
+	
+	
+	public int getComplaintId() {
+		return complaintId;
+	}
+	public void setComplaintId(int complaintId) {
+		Complaint.complaintId = complaintId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+	public String getAreaOfIncedence() {
+		return AreaOfIncedence;
+	}
+	public void setAreaOfIncedence(String areaOfIncedence) {
+		AreaOfIncedence = areaOfIncedence;
+	}
+
+	
+	
+}

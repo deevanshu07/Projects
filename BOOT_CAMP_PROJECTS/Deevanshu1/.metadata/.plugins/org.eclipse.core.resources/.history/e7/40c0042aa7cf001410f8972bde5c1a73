@@ -1,0 +1,36 @@
+package com.ejb.Login;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Purchaseproduct extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+  
+    public Purchaseproduct() {
+        super();
+        
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		PrintWriter pw=response.getWriter();
+		String selectedItem=request.getParameter("selectedProduct");
+		int quantity=Integer.parseInt(request.getParameter("quantity"));
+		
+
+		
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		
+	}
+
+}

@@ -1,0 +1,39 @@
+package com.items;
+
+import javax.persistence.GeneratedValue;
+
+@Entity
+public class Items {
+
+	@Id
+	@GeneratedValue
+	int itemId;
+	String itemName;
+	public int getItemId() 
+		{
+		return itemId;
+	}
+	public void setItemId(int itemId) 
+	{
+		this.itemId = itemId;
+	}
+	public Items() 
+	{
+		super();
+		
+	}
+	public Items(int itemId, String itemName) {
+		super();
+		this.itemId = itemId;
+		this.itemName = itemName;
+	}
+	public String getItemName() {
+		return itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+		
+	
+
+}

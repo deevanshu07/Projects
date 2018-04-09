@@ -1,0 +1,10 @@
+package com.session;
+
+import javax.ejb.Remote;
+
+@Remote
+public interface AddItemsRemote 
+{
+	public int addItem(Items item);
+
+}

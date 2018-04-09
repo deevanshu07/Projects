@@ -1,0 +1,19 @@
+package com.session;
+
+import javax.annotation.Resource;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.MappedSuperclass;
+
+
+@Stateless
+public class AddItems implements AddItemsRemote, AddItemsLocal {
+
+    @Resource(mappedName="TrainingUnit07")
+    EntityManager em;
+    public AddItems() 
+    {
+       
+    }
+
+}

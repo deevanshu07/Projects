@@ -1,0 +1,41 @@
+package com.soft.order;
+
+public class Order 
+{
+
+	String OrderType;
+	String orderDate;
+	String orderAmount;
+	
+	public String getOrderType() 
+	{
+		return OrderType;
+	}
+	public Order() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Order(String orderType, String orderDate, String orderAmount) {
+		super();
+		OrderType = orderType;
+		this.orderDate = orderDate;
+		this.orderAmount = orderAmount;
+	}
+	public void setOrderType(String orderType) {
+		OrderType = orderType;
+	}
+	public String getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+	public String getOrderAmount() {
+		return orderAmount;
+	}
+	public void setOrderAmount(String orderAmount) {
+		this.orderAmount = orderAmount;
+	}
+
+
+}

@@ -1,0 +1,93 @@
+package com.soft.servlet;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.naming.InitialContext;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.soft.ejb.TakeOrderSessionBeanRemote;
+import com.soft.model.Order;
+
+
+
+/**
+ * Servlet implementation class OrderServlet
+ */
+public class OrderServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	static int OrderId=0;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public OrderServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		String itemName=request.getParameter("itemName");
+		Date d=new Date();
+		
+		
+	/*	Order order=new Order(itemName,d);
+		
+		try{
+			InitialContext ic=new InitialContext();
+			
+			TakeOrderSessionBeanRemote remote=(TakeOrderSessionBeanRemote)ic.lookup("TakeOrderSessionBean/remote");
+				String s=remote.placeOrder(order);
+				response.getWriter().print(s);
+					
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		*/ArrayList<Order> cart=new ArrayList<Order>();
+		if(request.getSession().getAttribute("cart")!=null){
+			cart.addAll( (ArrayList<Order>)request.getSession().getAttribute("cart"));
+			cart.add(new Order(OrderId++,itemName,d));
+			request.getSession().setAttribute("cart",cart);
+			request.getSession().getServletContext().setAttribute("queue",cart);
+			RequestDispatcher view
+            = request.getRequestDispatcher("ShowOrder1.jsp");
+    
+    
+  
+    view.forward(request, response);
+		}else{
+			cart.add(new Order(OrderId++,itemName,d));
+			request.getSession().getServletContext().setAttribute("queue",cart);
+			request.getSession().setAttribute("cart",cart);
+			RequestDispatcher view
+			
+            = request.getRequestDispatcher("ShowOrder1.jsp");
+    
+    
+  
+    view.forward(request, response);
+		
+		}	
+		
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+}

@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+     <%@page import="java.util.*" %>
+    <%@page import="com.soft.model.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body bgcolor="pink">
+
+<center>
+<h1>ITEMS DETAIL</h1>
+<form action="./OrderServlet">
+
+ITEM NAME:<select name="itemName">
+<%
+  
+  ArrayList<Item> al=(ArrayList<Item>)session.getAttribute("all");
+  for(Item p:al){
+  
+  %>
+  
+ 
+  <option><% out.println(p.getItemName());%></option>
+
+<%} %>
+  </select><br><br>
+  
+
+
+<input type="submit" value="ORDER"> <br><br>
+  
+  </form>
+</center>
+</body>
+</html>

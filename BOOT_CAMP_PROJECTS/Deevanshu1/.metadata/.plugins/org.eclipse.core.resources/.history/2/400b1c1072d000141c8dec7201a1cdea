@@ -1,0 +1,9 @@
+package com.session;
+
+import javax.ejb.Remote;
+
+@Remote
+public interface StatefullSessionRemote 
+{
+	public String getName();
+}

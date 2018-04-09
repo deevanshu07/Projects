@@ -1,0 +1,67 @@
+package com.ejb.Login;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.soft.ejb.LoginBeanRemote;
+import com.soft.login.Product;
+import com.soft.product.ProductSessionBeanRemote;
+
+
+public class Addproduct extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+  
+    public Addproduct() 
+    {
+        super();
+       
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		InitialContext ic;
+		PrintWriter pw= response.getWriter();
+		String productId=request.getParameter("productId");
+		String productDesc=request.getParameter("productDesc");
+		int qty_on_hand=Integer.parseInt(request.getParameter("qty_on_hand"));
+		int unit_price=Integer.parseInt(request.getParameter("unit_price"));
+		try 
+		{
+			ic= new InitialContext();
+			
+			ProductSessionBeanRemote remote=(ProductSessionBeanRemote)ic.lookup("ProductSessionBean/remote");
+			Product product= new Product();
+			product.setProductId(productId);
+			product.setProductDesc(productDesc);
+			product.setQty_on_hand(qty_on_hand);
+			product.setUnit_price(unit_price);
+			remote.addItem(product);
+			
+		}
+		catch (Exception e) 
+		{
+			
+			e.printStackTrace();
+		}
+		
+
+	}
+
+	
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		
+	}
+
+}

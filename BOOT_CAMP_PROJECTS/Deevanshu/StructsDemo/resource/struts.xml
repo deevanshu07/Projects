@@ -1,0 +1,28 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="test" extends="struts-default">
+	 
+		
+		
+		<action name="showmenu" class="com.pack.Controller" method="addItem">
+		<result name="success">/Showmenu.jsp</result>
+		<result name="input">/index.jsp</result>
+		</action>
+		
+		<action name="add" class="com.pack.ItemController" method="putItem">
+		<result name="success">/Fail.jsp</result>
+		<result name="success1">/success1.jsp</result>
+		</action>
+		
+
+		<action name="index">
+			<result>index.jsp</result>
+		</action>
+
+		
+	</package>
+</struts>

@@ -1,0 +1,54 @@
+package com.soft.ejb;
+
+import javax.ejb.PostActivate;
+import javax.ejb.PrePassivate;
+import javax.ejb.Stateful;
+
+import org.jboss.ejb3.annotation.Cache;
+import org.jboss.ejb3.annotation.CacheConfig;
+import org.jboss.ejb3.cache.NoPassivationCache;
+import com.soft.data.PropertyObject;
+
+@Stateful
+@CacheConfig(maxSize=5,idleTimeoutSeconds=60,removalTimeoutSeconds=0)
+//@Cache("NoPassivationCache")
+public class PassivationBean implements PassivationBeanRemote, PassivationBeanLocal 
+{
+
+    public PassivationBean() 
+    {
+        
+    }
+
+    private PropertyObject myProperty;
+
+	@Override
+	public void setPropertyObject(PropertyObject propertyObject) {
+		this.myProperty = propertyObject;
+
+	}
+
+	@Override
+	public PropertyObject getPropertyObject() {
+
+		return this.myProperty;
+	}
+
+	@PrePassivate
+	private void prePassivate(){
+	    // Free resources 
+	    // ...
+
+	    System.out.println("Passivating EJB. Property value: " 
+	      + myProperty.getProperty());
+	}
+
+	@PostActivate
+	private void postActivate(){
+	    // Reactivate resources
+	    // ...
+
+	    System.out.println("Activating EJB. Property value: " 
+	      + myProperty.getProperty());
+	}
+}

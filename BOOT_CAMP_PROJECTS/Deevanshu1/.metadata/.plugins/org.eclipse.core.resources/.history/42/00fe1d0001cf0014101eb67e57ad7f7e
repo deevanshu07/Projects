@@ -1,0 +1,31 @@
+package com.soft.ejb;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+@Stateless
+public class LoginBean implements LoginBeanRemote, LoginBeanLocal {
+
+   
+	@PersistenceContext(unitName="TrainingUnit44")
+	private EntityManager em;
+    public LoginBean() 
+    {
+  
+    }
+
+	@Override
+	public String loginValidate(String userId, String password) 
+	{
+		
+		String query ="from LoginDetails where userId="+userId;
+		em.createQuery(query);
+		
+		System.out.println("SSSSS");
+		return "Successful";
+		
+		
+	}
+
+}

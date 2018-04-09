@@ -1,0 +1,13 @@
+package com.soft.controller;
+
+public class ActionController {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

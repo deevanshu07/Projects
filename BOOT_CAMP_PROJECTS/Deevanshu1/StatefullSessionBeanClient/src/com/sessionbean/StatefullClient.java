@@ -1,0 +1,40 @@
+package com.sessionbean;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import com.session.StatefullBeanRemote;
+import com.stateless.StatelessBeanRemote;
+
+
+public class StatefullClient {
+
+	
+	public static void main(String[] args) 
+	{
+		InitialContext ic;
+		StatefullClient client= new StatefullClient();
+		
+		try 
+		{
+			ic=new InitialContext();
+			StatefullBeanRemote remote=(StatefullBeanRemote)ic.lookup("StatefullBean/remote");
+			StatelessBeanRemote remote1=(StatelessBeanRemote)ic.lookup("StatelessBean/remote");
+			System.out.println("Statefull Client " +remote.getName());
+			System.out.println("Statefull Client " +remote.getName());
+			System.out.println("Statefull Client " +remote.getName());
+			System.out.println();
+			
+			System.out.println("Stateless Client " +remote1.getname());
+			System.out.println("Stateless Client " +remote1.getname());
+			System.out.println("Stateless Client " +remote1.getname());
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+
+<hibernate-mapping package="com.infogain.model">
+<class name="Employee" table="bct_emp">
+<id name="id" column="emp_id">         <!-- Primary key -->
+<generator class="assigned"/>
+</id>
+<property name="name" column="emp_name"/>
+<property name="designation"/>
+<property name="salary"/>
+
+</class>	
+</hibernate-mapping>

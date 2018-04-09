@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.infy.model.map">
+<class name="Employee"
+table="aa_emp">
+<id name="employeeId">
+<generator class="native"/>
+</id>
+<map name="benefit" table="aa_benefit">
+<key column="emp_id"/>
+<index column="benfitname" type="string"/>
+<element column="benefitvalue" type="string"/>
+</map>
+<property name="ename"/>
+</class>
+
+</hibernate-mapping>
+
+<!-- <hibernate-mapping package="com.infy.model.map">
+<class name="SupportProperty"
+table="aa_supportproperty">
+<id name="id">
+<generator class="native"/>
+</id>
+<map name="properties" table="aa_properties">
+<key column="part_id"/>
+<index column="property_name" type="string"/>
+<element column="property_value" type="string"/>
+</map>
+<property name="name" type="string"/>
+</class>
+
+</hibernate-mapping> -->

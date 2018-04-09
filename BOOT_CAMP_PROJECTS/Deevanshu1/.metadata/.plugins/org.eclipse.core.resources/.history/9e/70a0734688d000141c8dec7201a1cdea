@@ -1,0 +1,37 @@
+package com.soft.ejb;
+
+import java.util.ArrayList;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import com.soft.model.Item;
+
+/**
+ * Session Bean implementation class ItemSessionBean
+ */
+@Stateless
+public class ItemSessionBean implements ItemSessionBeanRemote, ItemSessionBeanLocal {
+	 @PersistenceContext(unitName="TrainingUnit5") 
+     private EntityManager em;
+    /**
+     * Default constructor. 
+     */
+    public ItemSessionBean() {
+        // TODO Auto-generated constructor stub
+    }
+	@Override
+	public ArrayList<Item> getAllItem() {
+		  ArrayList<Item> all=new ArrayList<Item>();  
+			String query="FROM Item";
+			Query que=em.createQuery(query);
+			all=(ArrayList<Item>)que.getResultList();
+			
+				return all;
+			
+
+	}
+
+}

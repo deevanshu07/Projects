@@ -1,0 +1,14 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="employee" extends="struts-default">
+		<action name="add2" class="com.infogain.controller.manageMenu" method="listitems">
+			<result name="success">/NewFile1.jsp</result>
+			<result name="none">/fail.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+	</package>
+</struts>

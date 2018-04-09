@@ -1,0 +1,78 @@
+package com.ejb.client;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import com.soft.bean.EmployeeOperationBeanRemote;
+import com.soft.ejb.Employee;
+
+public class ClientJpa 
+{
+	
+@SuppressWarnings("unchecked")
+public static void main(String[] args) 
+{
+	
+	try {
+		Scanner sc = new Scanner(System.in);
+	Employee emp= new Employee();
+		emp.setEmpName("deevanshu");
+		emp.setEmpLocation("Noida");
+		InitialContext ic = new InitialContext();
+		EmployeeOperationBeanRemote remote=(EmployeeOperationBeanRemote) 
+				ic.lookup("EmployeeOperationBean/remote");
+		/*int i=remote.addEmployee(emp);
+		System.out.println("Employee with Id=" +i +"is added");
+		
+		Employee emp2=remote.getEmployee(23);
+		System.out.println("Employee details are"+"\n"+emp2.getEmpName()+"\t"+emp2.getEmpLocation());*/
+		System.out.println("Before deletion");
+		ArrayList <Employee>all1=remote.getAllEmployee();
+		for (Employee ite : all1) 
+		{
+			System.out.println("Employee Id="+ite.getEmpId());
+			System.out.println("Employee Name="+ite.getEmpName());
+			System.out.println("Employee Locatio="+ite.getEmpLocation());
+			System.out.println("\n");
+			
+		}
+		
+		System.out.println("After Deletion");
+		System.out.println("Enter id to delete");
+		int empId=sc.nextInt();
+		
+		/*ArrayList <Employee>remove=remote.removeEmployee(empId);
+		
+		for (Employee ite : remove) 
+		{
+			System.out.println("Employee Id="+ite.getEmpId());
+			System.out.println("Employee Name="+ite.getEmpName());
+			System.out.println("Employee Locatio="+ite.getEmpLocation());
+			System.out.println("\n");
+			
+		}*/
+		
+		int remove =remote.removeEmployee(empId);
+		System.out.println(remove);
+		
+		for (Employee ite : all) 
+		{
+			System.out.println("Employee Id="+ite.getEmpId());
+			System.out.println("Employee Name="+ite.getEmpName());
+			System.out.println("Employee Locatio="+ite.getEmpLocation());
+			System.out.println("\n");
+			
+		}
+		
+	} 
+	catch (NamingException e) 
+	{
+		e.printStackTrace();
+	}
+	
+	
+}
+}

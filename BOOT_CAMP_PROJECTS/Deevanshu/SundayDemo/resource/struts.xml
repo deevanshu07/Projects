@@ -1,0 +1,18 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="test" extends="struts-default">
+		
+		<action name="order" class="com.controller.Controller" method="execute">
+		<result name="success">/Order.jsp</result>
+		</action> 
+		
+		<action name="logoutaction" class="com.controller.Controller" method="logout">
+			<result name="success">index.jsp</result>
+		</action>
+		
+	</package>
+</struts>

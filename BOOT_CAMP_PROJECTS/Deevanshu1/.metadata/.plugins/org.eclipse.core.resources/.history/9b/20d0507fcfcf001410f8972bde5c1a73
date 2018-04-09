@@ -1,0 +1,68 @@
+package com.soft.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.jms.ConnectionFactory;
+import javax.jms.ObjectMessage;
+import javax.jms.Queue;
+import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.QueueSender;
+import javax.jms.QueueSession;
+import javax.naming.InitialContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ComplaintServlet extends HttpServlet 
+{
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		response.setContentType("text/html");
+		PrintWriter pw=response.getWriter();
+		String name=request.getParameter("name");
+		String detail=request.getParameter("detail");
+		String helpdesk=request.getParameter("helpdesk");
+		
+		ConnectionFactory cf=null;
+		QueueSession session=null;
+				try{
+			
+			InitialContext iniCtx = new InitialContext();
+			cf=(ConnectionFactory)iniCtx.lookup("ConnectionFactory");
+			// Creating Connection factory
+			QueueConnectionFactory qcf=(QueueConnectionFactory)cf;
+			// Creating Connection factory
+			QueueConnection conn=qcf.createQueueConnection();
+			//
+			Queue myQueue = (Queue) iniCtx.lookup("queue/complaintQueue");
+			
+			session=conn.createQueueSession(false,QueueSession.AUTO_ACKNOWLEDGE);
+			
+			QueueSender sender =session.createSender(myQueue);
+			//TextMessage mymsg=session.createTextMessage(" Message send by me" + message);
+			
+			ObjectMessage mymsg=session.createObjectMessage();
+			mymsg.setStringProperty("name",name);
+			mymsg.setStringProperty("detail",detail);
+			mymsg.setStringProperty("helpdesk",helpdesk);
+            sender.send(mymsg);
+			
+			pw.println("Message send successfully to " + myQueue.getQueueName() );
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+	
+	}
+
+}

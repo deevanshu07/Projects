@@ -1,0 +1,13 @@
+package procedure_demo;
+
+public class Demo_procedure {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Q1_Servlet_2150186</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <listener>
+    <listener-class>com.soft.liste.Listener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>deevanshu</param-name>
+    <param-value>South Ex,Lajpat Nagar,Rohini</param-value>
+  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>RegisterComplaintServlet</display-name>
+    <servlet-name>RegisterComplaintServlet</servlet-name>
+    <servlet-class>com.soft.servlet.RegisterComplaintServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterComplaintServlet</servlet-name>
+    <url-pattern>/RegisterComplaintServlet</url-pattern>
+  </servlet-mapping>
+</web-app>

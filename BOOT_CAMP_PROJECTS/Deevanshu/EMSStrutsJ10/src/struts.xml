@@ -1,0 +1,54 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="test" extends="tiles-default">
+	    <result-types>
+            <result-type name="tiles"
+                class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+
+	<interceptors>
+		<interceptor name="mylogger" class="com.infogain.controller.MyLoggingInterceptor"/>
+	    <interceptor name="myparamsetter" class="com.infogain.controller.ParamIntercept"/>
+	</interceptors>
+
+	    <global-results>
+		<result name="e1">e1.jsp</result>
+		<result name="e2">e2.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+		<exception-mapping result="e1" exception="java.lang.NullPointerException"></exception-mapping>
+		<exception-mapping result="e2" exception="java.lang.ArithmeticException"></exception-mapping>
+		</global-exception-mappings>
+	
+	
+		<action name="get*" class="com.infogain.controller.ManageEmployee" method="{1}">
+		    <interceptor-ref name="defaultStack" />
+		    <interceptor-ref name="myparamsetter"></interceptor-ref>
+		    <interceptor-ref name="mylogger"></interceptor-ref>
+		    <result type="tiles" name="success1">listemployeelayout</result>
+		    <result type="tiles" name="success2">listdepartmentlayout</result>
+		    <!-- <result name="success1">/list_employee.jsp</result>
+			<result name="success2">/list_department.jsp</result>
+			 -->
+			 <result name="none">/fail.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="index">
+			<result>index.jsp</result>
+		<!-- 	<result type="tiles" name="success">homelayout</result> -->
+		</action>
+		<action name="logoutaction" class="com.infogain.controller.LogOutAction">
+			<result name="success">index.jsp</result>
+		</action>
+		   <action name="*Register" method="{1}" class="com.infogain.controller.RegisterAction">
+            <result name="populate">/register.jsp</result>
+            <result name="input">/register.jsp</result>
+            <result name="success">/success.jsp</result>
+        </action>    
+	</package>
+</struts>

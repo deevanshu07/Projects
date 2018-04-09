@@ -1,0 +1,48 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="test" extends="struts-default">
+		<action name="showmenu" class="com.info.controller.MenuAction" method="add">
+		<result name="success">/ShowMenu.jsp</result>
+		</action> 
+		
+		<action name="itemadd" class="com.info.controller.MenuAction" method="additem">
+		<result name="success">/itemsinserted.jsp</result>
+		<result name="none">index.jsp </result>
+		</action>
+		
+		<action name="order" class="com.info.controller.TakeorderController" method="showlist">
+		<result name="success">Order.jsp</result>
+		<result name="success1">Order.jsp</result>
+		</action>
+		
+		<action name="addmore" class="com.info.controller.SaveOrder" method="saveorder">
+		<result name="success">Order.jsp</result>
+		</action>
+		
+		<action name="submitorder" class="com.info.controller.TakeorderController" method="submit">
+		<result name="success">ShowOrder.jsp </result>
+		</action>
+		
+		<action name="deleteorder" class="com.info.controller.TakeorderController" method="delete">
+		<result name="success">deleteorder.jsp</result>
+		</action>
+		
+		<action name="deleteitem" class="com.info.controller.DeleteController" method="deleteitems">
+		<result name="success">Showdeleted.jsp</result>
+		</action>
+		
+	<action name="totalbill" class="com.info.controller.TakeorderController" method="generatebill">
+	<result name ="success">Generatebill.jsp</result>
+	</action>
+	
+	
+	
+	
+		
+		
+	</package>
+</struts>

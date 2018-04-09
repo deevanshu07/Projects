@@ -1,0 +1,88 @@
+package com.soft.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Enumeration;
+
+import javax.jms.ConnectionFactory;
+import javax.jms.ObjectMessage;
+import javax.jms.Queue;
+import javax.jms.QueueBrowser;
+import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.QueueSession;
+import javax.naming.InitialContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class MessageBrowserServlet
+ */
+public class MessageBrowserServlet extends HttpServlet {
+	
+   
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		response.setContentType("text/html");
+		PrintWriter pw=response.getWriter();
+		String helpdesk=request.getParameter("helpdesk");
+		
+		ConnectionFactory cf=null;
+		QueueSession session=null;
+				try{
+			
+			InitialContext iniCtx = new InitialContext();
+			cf=(ConnectionFactory)iniCtx.lookup("ConnectionFactory");
+			// Creating Connection factory
+			QueueConnectionFactory qcf=(QueueConnectionFactory)cf;
+			// Creating Connection factory
+			QueueConnection conn=qcf.createQueueConnection();
+			session =conn.createQueueSession(false,QueueSession.AUTO_ACKNOWLEDGE );
+			Queue myQueue=(Queue)iniCtx.lookup("queue/complaintQueue");
+			String selector="helpdesk='"+helpdesk+"'";
+			
+			
+		 QueueBrowser browser=session.createBrowser(myQueue,selector);
+			
+			
+		Enumeration myenum=	browser.getEnumeration();
+		
+		while(myenum.hasMoreElements())	
+			
+		{
+			
+			
+			ObjectMessage msg=(ObjectMessage)myenum.nextElement();
+	
+					pw.print("Name===" + msg.getStringProperty("name")  
+					+ "detail" + msg.getStringProperty("detail"));
+			
+		}
+		
+		
+			
+				}catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		
+		doGet(request,response);
+	}
+
+}

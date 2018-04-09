@@ -1,0 +1,26 @@
+package com.session;
+
+import javax.annotation.Resource;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.MappedSuperclass;
+
+import com.items.Items;
+
+
+@Stateless
+public class AddItems implements AddItemsRemote, AddItemsLocal {
+
+    
+    public AddItems() 
+    {
+       
+    }
+	
+	@Override
+	public int addItem(com.session.Items item) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

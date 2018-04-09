@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="true" key="J2EE_EXPORT_OVERWRITE"/>
+	<item value="false" key="J2EE_EXPORT_SOURCE"/>
+	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\Q1_Servlet_2150186.war"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\Q2_2150186_Client.war"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\Q1_2150186_Client.war"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\QueueAssignmentClient.war"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\orderProcessingWeb.war"/>
+	</list>
+	<list key="MRU_RUNTIME_STORE">
+		<item value="JBoss v5.0"/>
+	</list>
+	<list key="J2EE_EXPORT_JST_EJB">
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\Q1_2150186.jar"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\Q2_2150186.jar"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\QueueAssignment.jar"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\OrderProcessingEjb.jar"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\Assignment_2.jar"/>
+	</list>
+</section>

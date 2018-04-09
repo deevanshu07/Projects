@@ -1,0 +1,14 @@
+package com.soft.product;
+
+import java.util.List;
+
+import javax.ejb.Local;
+
+@Local
+public interface ProductSessionBeanLocal 
+{
+	public List allProducts();
+	public String deleteProduct(String productId);
+	public String addItem(String productId,String productDesc,int qty_on_hand,int unitPrice);
+
+}

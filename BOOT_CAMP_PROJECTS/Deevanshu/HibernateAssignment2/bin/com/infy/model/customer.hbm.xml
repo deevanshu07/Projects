@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+
+<hibernate-mapping>
+
+	<class name="com.info.model.Book" table="book1">
+		<id name="id">
+			<generator class="increment" />
+		</id>
+		<property name="name" />
+		<property name="author" />
+	</class>
+	
+	<class name="com.info.model.PrintedBook" table="pbook1">
+		<property name="size" />
+		<property name="type" />
+	</class>
+	
+	<class name="com.info.model.Book" table="book1">
+		<property name="noOfPages" />
+		<property name="ISBN" />
+	</class>
+	
+
+	
+</hibernate-mapping>

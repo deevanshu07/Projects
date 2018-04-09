@@ -1,0 +1,22 @@
+package com.session;
+
+import javax.ejb.Stateful;
+
+/**
+ * Session Bean implementation class StatefullBean
+ */
+@Stateful
+public class StatefullBean implements StatefullBeanRemote, StatefullBeanLocal {
+
+    
+    public StatefullBean() {
+        
+    }
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

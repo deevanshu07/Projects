@@ -1,0 +1,20 @@
+package com.soft.product;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+/**
+ * Session Bean implementation class ProductSessionBean
+ */
+@Stateless
+public class ProductSessionBean implements ProductSessionBeanRemote, ProductSessionBeanLocal {
+
+	@PersistenceContext(unitName="TrainingUnit44")
+	private EntityManager em;
+    public ProductSessionBean() 
+    {
+
+    }
+
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+
+<hibernate-mapping package="com.infy.model">
+
+	<class name="Customer" table="customers" discriminator-value="P">
+<id name="customerId" >         <!-- Primary key -->
+<generator class="native"/>
+</id>
+<discriminator column="entity_type"/>
+<property name="custName"/>
+<property name="custDob"/>
+<property name="custMobile"/>
+<property name="custType"/>
+<property name="custAddress"/>
+
+
+
+<subclass name="RegularCustomer" discriminator-value="P">
+    	
+     <property name="customerPoints" />
+   </subclass>
+   
+   
+    <subclass name="CorporateCustomer" discriminator-value="S">
+    
+     <property name="regNo" />
+     <property name="discountPercent"/>
+   </subclass>
+
+</class>
+
+
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body> 
+<form action="Addproduct">
+PRODUCTID   :This is Auto generated value<br/>
+PRODUCTDESC <input type="text" name="productDesc"/><br/>
+QTY_ON_HAND  <input type="text" name="qty_on_hand"/><br/>   
+UNIT_PRICE	 <input type="text" name="unit_price"/><br/>
+<input type="submit" value="Add"/>
+</form>
+</body>
+</html>

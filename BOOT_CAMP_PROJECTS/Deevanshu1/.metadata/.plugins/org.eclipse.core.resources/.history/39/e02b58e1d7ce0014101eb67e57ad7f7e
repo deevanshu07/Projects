@@ -1,0 +1,18 @@
+package com.soft.ejb.session;
+
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class OrderProcessingBean
+ */
+@Stateless
+public class OrderProcessingBean implements OrderProcessingBeanRemote, OrderProcessingBeanLocal {
+
+    /**
+     * Default constructor. 
+     */
+    public OrderProcessingBean() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

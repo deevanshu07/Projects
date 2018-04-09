@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+
+<hibernate-mapping package="com.inf.model">
+
+<class name="Employee" table="bct_emp">
+    <id name="id" column="id">
+    	<generator class="native"/>
+    </id>
+     <component name="name">
+     	<property name="initial" column="ini"/>
+     	<property name="first"/>
+     	<property name="last"/>
+     
+     </component>
+    
+    <property name="designation"/>
+    <property name="salary"/>    
+  </class>
+
+	
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+package com.soft;
+
+import javax.ejb.Stateless;
+
+@Stateless
+public class FindEmployee implements FindEmployeeRemote, FindEmployeeLocal {
+
+   
+    public FindEmployee() 
+    {
+      
+    }
+
+}

@@ -1,0 +1,133 @@
+Trigger a click on load on href-
+$("#id").trigger('click');
+
+
+Call a function when the document loading has complete
+if (document.readyState === "complete") 
+{ 
+//Call a function
+}
+
+How the DOM loads:
+http://stackoverflow.com/questions/1795438/load-and-execution-sequence-of-a-web-page
+
+
+
+//Call a function after some time in javascript
+$(document).ready(function() {
+setTimeout(function(){alert("Function Called") }, 100);});
+
+//Holding the elements for few seconds
+ $.holdReady(true);
+    alert("jQuery ready event being released");
+    $.holdReady(false);
+
+
+//Find all the first anchor tags inside a li
+$('li').find('a:first').each(function(e)
+{
+console.log($(this).text());
+});
+
+
+/Append an element at end and and also at front
+$(strMenu).each(function()
+				{
+				$(this).prepend($('<li class="unique">'));
+				$(this).append($('</li>'));
+				});
+
+
+//Inserting after the last child in jQuery
+$(this).find('ul.uList:last-child').append(dupliCate);
+
+
+Railway API
+http://api.erail.in/stations/?key=API_KEY
+API_KEY is given by irctc
+
+//Angular
+ng-controller does not work with ng-include
+
+ng-cloak
+
+There is a huge difference between onkeypress and onkeydown
+
+!-----most Important-----! Handlebar templates
+
+
+$(document).ready(function()
+{
+$("#label-default").hover(function () {
+alert("DDDDDDDDDDDDDDD");
+    $(this).append($("<span> HOVERING!!!!! </span>"));
+},function () {
+    $(this).find('span').slideUp('fast');
+});
+});
+
+
+Consolas
+
+
+
+to chnage the text to link in bootstrapTWC
+if(channelRefKey.match("THIRD_PARTY_DIRECTORY"))
+{
+$(data.record).each(function(){
+// Get the content
+var str = $(this).html();
+// Set the regex string
+var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig
+// Replace plain text links by hyperlinks
+var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
+// Echo link
+$(this).html(replaced_text);
+console.log(replaced_text);});
+}
+
+
+JAVASCRIPT:
+
+To use Object.prototype.toString() with every object, we have to use Function.prototype.call() or  Function.prototype.apply() on it.
+
+Delete operator doesn't work on local variables
+
+Object.create();
+
+Javascript follows Prototype based programming.
+
+Class with empty constructor: var Person= function() { };
+
+
+Using Cookies in javascript:
+
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+//This function is called at the compile time
+function func(){
+}
+
+//This function is called at the run time
+var foo=function(){
+}

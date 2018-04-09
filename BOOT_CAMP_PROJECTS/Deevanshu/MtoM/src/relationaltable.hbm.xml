@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.infy.model">
+
+	<class name="com.infy.model.Previledge" table="ppreviledge">
+
+		<id name="previledgeId" type="int"
+			column="previledgeId">
+			<generator class="increment" />
+		</id>
+
+		<property name="name" column="name" />
+		<property name="cost" type="int" column="cost" />
+
+		<set name="employees" table="pempprevlidge"
+			inverse="true">
+			<key column="pId" />
+			<many-to-many class="Employee" column="EMPLOYEE_ID" />
+		</set>
+		
+	</class>	
+	<class name="com.infy.model.Employee" table="pemployee">
+		<id name="employeeId" type="int" column="EMPLOYEE_ID">
+			<generator class="increment" />
+		</id>
+
+		<property name="firstname" />
+		<property name="job" column="job" />
+		<property name="salary" column="sal" type="int" />
+
+		<set name="previledge" table="pempprevlidge" cascade="all">
+			<key column="EMPLOYEE_ID" />
+			<many-to-many class="Previledge" column="pId" />
+		</set>
+
+	</class>
+
+</hibernate-mapping>

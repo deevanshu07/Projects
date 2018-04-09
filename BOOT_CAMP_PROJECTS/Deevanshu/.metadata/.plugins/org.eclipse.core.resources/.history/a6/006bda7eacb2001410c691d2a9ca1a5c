@@ -1,0 +1,72 @@
+
+public class itemClass 
+{
+	int itemId;
+	String itemName;
+	int itemPrepTime;
+	double price;
+	
+	itemClass()
+	{
+		
+	}
+	
+
+	itemClass(int i,String n,int p,double pr)
+	{
+		itemId=i;
+		itemName=n;
+		itemPrepTime=p;
+		price=pr;
+	}
+	
+	
+	
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+
+
+
+	public int getItemId() 
+	{
+		return itemId;
+	}
+
+
+    public void setItemId(int itemId) 
+	{
+		this.itemId = itemId;
+	}
+
+
+    public String getItemName()
+	{
+		return itemName;
+	}
+
+    public void setItemName(String itemName)
+	{
+		this.itemName = itemName;
+	}
+
+
+    public int getItemPrepTime()
+	{
+		return itemPrepTime;
+	}
+
+    public void setItemPrepTime(int itemPrepTime) 
+	{
+		this.itemPrepTime = itemPrepTime;
+	}
+	
+
+}
+
+

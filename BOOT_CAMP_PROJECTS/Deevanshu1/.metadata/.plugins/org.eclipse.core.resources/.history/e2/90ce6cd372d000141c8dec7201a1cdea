@@ -1,0 +1,32 @@
+package com.sessionbean;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import com.session.StatefullSessionBeanRemote;
+
+public class StatefullClient {
+
+	
+	public static void main(String[] args) 
+	{
+		InitialContext ic;
+		StatefullClient client= new StatefullClient();
+		
+		try 
+		{
+			ic=new InitialContext();
+			StatefullSessionBeanRemote remote=(StatefullSessionBeanRemote)ic.lookup("StatefullSessionBean/remote");
+			System.out.println("In Client " +remote.getName());
+			System.out.println("In Client " +remote.getName());
+			System.out.println("In Client " +remote.getName());
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}

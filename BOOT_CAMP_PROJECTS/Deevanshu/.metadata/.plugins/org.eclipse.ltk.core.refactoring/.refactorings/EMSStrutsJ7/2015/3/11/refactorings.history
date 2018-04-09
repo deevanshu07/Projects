@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;LogOutAction.java&apos; to &apos;StructsAssignment/src/com.info.controller&apos;&#x0D;&#x0A;- Original project: &apos;EMSStrutsJ7&apos;&#x0D;&#x0A;- Destination element: &apos;StructsAssignment/src/com.info.controller&apos;&#x0D;&#x0A;- Original element: &apos;com.infogain.controller.LogOutAction.java&apos;" description="Copy compilation unit" destination="=StructsAssignment/src&lt;com.info.controller" element1="/src&lt;com.infogain.controller{LogOutAction.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1426332495142" units="1" version="1.0"/>
+</session>

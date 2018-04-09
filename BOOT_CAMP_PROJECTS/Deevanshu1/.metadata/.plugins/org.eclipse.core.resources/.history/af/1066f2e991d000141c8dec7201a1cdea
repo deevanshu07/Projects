@@ -1,0 +1,11 @@
+package com.session;
+
+import javax.ejb.Local;
+
+@Local
+public interface AddItemsLocal 
+{
+	public int addItem(Items item);
+	
+
+}

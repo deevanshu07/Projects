@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.infy.model.Topic" table="b_topics">
+		<id name="id" type="int">
+			<generator class="increment" />
+		</id>		
+		<property name="name"/>
+		<property name="weightage" type="int"/>
+	</class>	
+
+	<class name="com.infy.model.Course" table="b_courses">
+		<id name="id" type="int">
+			<generator class="increment" />
+		</id>		
+		<property name="name"/>
+		<property name="fee" type="int"/>
+		<list name="topics" cascade="all" table="b_topics">
+			<key column="course_id"></key>
+			<index column="topic_index"></index>
+			<one-to-many class="com.infy.model.Topic"/>
+		</list>
+	</class>
+</hibernate-mapping>
+		
+	

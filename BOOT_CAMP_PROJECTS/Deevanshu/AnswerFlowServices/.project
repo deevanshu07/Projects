@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>AnswerFlowServices</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>acrmsrv</name>
+			<type>2</type>
+			<location>D:/DATA/Answerflow/Original Code/AnswerFlowServices/generated/acrmsrv</location>
+		</link>
+		<link>
+			<name>bin</name>
+			<type>2</type>
+			<location>D:/DATA/Answerflow/Original Code/AnswerFlowServices/bin</location>
+		</link>
+		<link>
+			<name>geoipsrv</name>
+			<type>2</type>
+			<location>D:/DATA/Answerflow/Original Code/AnswerFlowServices/generated/geoipsrv</location>
+		</link>
+		<link>
+			<name>src</name>
+			<type>2</type>
+			<location>D:/DATA/Answerflow/Original Code/AnswerFlowServices/src</location>
+		</link>
+	</linkedResources>
+</projectDescription>

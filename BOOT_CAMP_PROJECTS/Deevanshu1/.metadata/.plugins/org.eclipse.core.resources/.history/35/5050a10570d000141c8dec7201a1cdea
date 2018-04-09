@@ -1,0 +1,20 @@
+package com.session;
+
+import javax.ejb.Stateful;
+import javax.ejb.Stateless;
+
+@Stateful
+public class StatefullSession implements StatefullSessionRemote, StatefullSessionLocal {
+
+    
+    public StatefullSession() {
+       
+    }
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

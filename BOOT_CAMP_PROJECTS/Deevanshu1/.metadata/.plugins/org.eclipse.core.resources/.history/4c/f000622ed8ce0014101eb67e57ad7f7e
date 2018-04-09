@@ -1,0 +1,26 @@
+package com.soft.ejb.session;
+
+import javax.ejb.Stateless;
+
+import com.soft.order.Order;
+
+/**
+ * Session Bean implementation class OrderProcessingBean
+ */
+@Stateless
+public class OrderProcessingBean implements OrderProcessingBeanRemote, OrderProcessingBeanLocal {
+
+  
+    public OrderProcessingBean() 
+    {
+       
+    }
+
+	@Override
+	public String placeOrder(Order order) 
+	{
+		
+		return null;
+	}
+
+}

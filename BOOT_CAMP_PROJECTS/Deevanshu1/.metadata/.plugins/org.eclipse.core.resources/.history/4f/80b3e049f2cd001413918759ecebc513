@@ -1,0 +1,57 @@
+package com.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.info.ejb.Item;
+import com.soft.ejb.FindItemSessionBeanRemote;
+
+public class Update extends HttpServlet 
+{
+	private static final long serialVersionUID = 1L;
+       
+   
+    public Update() 
+    {
+        super();
+       
+    }
+
+    List<Item> searchList;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		InitialContext ic;
+		PrintWriter pw=response.getWriter();
+		String Uname=request.getParameter("itemId");
+		pw.println("Item Id ="+Uname);
+		pw.println("Items Details are:");
+		try 
+		{
+			ic = new InitialContext();
+			FindItemSessionBeanRemote remote=(FindItemSessionBeanRemote)ic.lookup
+					("FindItemSessionBean/remote");
+			
+		} catch (Exception e) 
+		{
+			
+			e.printStackTrace();
+		}
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		
+	}
+
+}
