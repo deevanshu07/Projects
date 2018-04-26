@@ -1,0 +1,69 @@
+#todoList {
+	font-size: 30px;
+}
+
+p {
+	font-size: 30px;
+}
+
+li {
+	color: white;
+}
+
+input[type='text'] {
+	border-top: 1px solid #080808;
+	background: #395944;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ebd3d5),
+		to(#395944));
+	background: -webkit-linear-gradient(top, #ebd3d5, #395944);
+	background: -moz-linear-gradient(top, #ebd3d5, #395944);
+	background: -ms-linear-gradient(top, #ebd3d5, #395944);
+	background: -o-linear-gradient(top, #ebd3d5, #395944);
+	padding: 15px 45px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+	-webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	-moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+	color: #000000;
+	font-size: 11px;
+	font-family: Georgia, serif;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+button {
+	border-top: 1px solid #080808;
+	background: #395944;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ebd3d5),
+		to(#395944));
+	background: -webkit-linear-gradient(top, #ebd3d5, #395944);
+	background: -moz-linear-gradient(top, #ebd3d5, #395944);
+	background: -ms-linear-gradient(top, #ebd3d5, #395944);
+	background: -o-linear-gradient(top, #ebd3d5, #395944);
+	padding: 6px 12px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+	-webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	-moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+	color: #000000;
+	font-size: 11px;
+	font-family: Georgia, serif;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+body {
+	font: 14px Georgia, serif;
+	background: #393939;
+	color: white;
+}
+
+ul {
+	list-style-type: none;
+}

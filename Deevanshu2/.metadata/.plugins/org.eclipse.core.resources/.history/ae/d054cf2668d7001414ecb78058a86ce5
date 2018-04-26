@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>photo_style</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <header>
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><font size=5px><a href="index.html">INFOGAIN JOB<span class="logo_colour">PORTAL</span></a></font></h1>
+        </div>
+      </div>
+      <nav>
+        <ul class="sf-menu" id="nav">
+          <li class="selected"><a href="index.html">Home</a></li>
+         <li><a href="Organise.html">Organisation chart</a></li>
+          <li><a href="#">JOBS</a>
+            <ul>
+              <li><a href="#">Jobs By Location</a>
+			  
+			   <ul>
+                  <li><a href="#">Noida</a></li>
+                  <li><a href="#">Pune</a></li>
+                  <li><a href="#">Dubai</a></li>
+                  <li><a href="#">USA</a></li>
+                </ul>
+				</li>
+              <li><a href="#">Jobs By Designation</a>
+                <ul>
+                  <li><a href="#">Architect</a></li>
+                  <li><a href="#">Project Manager</a></li>
+                  <li><a href="#">Team Lead</a></li>
+                  <li><a href="#">Software Engineer</a></li>
+                  <li><a href="#">Associate Consultant</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Jobs By Departments</a>
+			   <ul>
+                  <li><a href="#">Administration</a></li>
+                  <li><a href="#">Finance</a></li>
+                  <li><a href="#">Human Resources</a></li>
+                  <li><a href="#">Technical</a></li>
+                </ul>	  
+			  </li>
+        
+            </ul>
+          </li>
+		   <li><a href="view.html">View Profile</a></li>
+		    
+          <li><a href="contact.html">Contact Us</a></li>
+		     
+			 <li><a href="index.html">Log Out</a></li>
+       
+        </ul>
+      </nav>
+    </header>
+    <div id="site_content">
+      <div id="sidebar_container">
+        <div class="gallery">
+          <ul class="images">
+            <li class="show"><img width="450" height="450" src="images/1.jpg" alt="photo_one" /></li>
+            <li><img width="450" height="450" src="images/2.jpg" alt="photo_two" /></li>
+            <li><img width="450" height="450" src="images/3.jpg" alt="photo_three" /></li>
+          </ul>
+        </div>
+      </div>
+      <div id="content">
+        <h1>Welcome Mr. Akash</h1>
+		<img src="C:\Users\DEEVANSHU.MAHAJAN\Downloads\photo_style\photo_style\images\aakash.jpg" height=200 width=200>
+        <p><font size=4px> Employee Id</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2150187</p>
+		 <p><font size=4px> Designation</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software Engineer Trainee</p>
+		  <p><font size=4px> Department</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technical</p>
+       
+        
+      </div>
+    </div>
+    <footer>
+      <p>Copyright &copy; 2015 Infogain Corporation. All rights reserved.</p>
+    </footer>
+  </div>
+  <p>&nbsp;</p>
+  <!-- javascript at the bottom for fast page loading -->
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
+  <script type="text/javascript" src="js/jquery.sooperfish.js"></script>
+  <script type="text/javascript" src="js/image_fade.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('ul.sf-menu').sooperfish();
+    });
+  </script>
+</body>
+</html>

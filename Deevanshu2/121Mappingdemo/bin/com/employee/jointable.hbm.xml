@@ -1,0 +1,26 @@
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="com.employee">
+    
+   <class name="Employee" table="employee1">
+   <id name="id" column="emp_id">
+			<generator class="native" />
+		</id>
+		<property name="name" column="emp_name" />
+		<property name="designation" />
+		<property name="salary" />
+   
+   <joined-subclass name="person" table="person1">
+    	<key column="id"/>
+     <property name="name" />
+     <property name="age" type="int"/>
+   </joined-subclass>
+   
+  
+   </class>
+
+</hibernate-mapping>
+     

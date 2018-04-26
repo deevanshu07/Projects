@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form action="view.html">
+	<table width=400px height=150px>
+	<tr rowspan=2>
+	<td>
+	<img src="images/aakash.jpg"height=100px width=100px></td>
+	</tr>
+	<tr><td><font size=3px> Employee ID</font></td><td>2150181</td></tr>
+	<tr><td><font size=3px>Mobile No</td><td>22122293</td></tr>
+	<tr><td><font size=3px>Email ID</td><td>akash@yahoo.in</td></tr>
+	<tr><td><font size=3px>Designation</td><td>Software Engineer Trainee</td></tr>
+	<tr><td><font size=3px>Branch id</td><td>3</td></tr>
+	
+
+	<tr><td><font size=3px>D.O.B</td><td>22-12-93</td></tr>
+	<tr><td><font size=3px>D.O.J</td><td>22-12-2010</td></tr>
+	
+	<tr><td><font size=3px>Experience</td><td>3 years</td></tr>
+	
+	
+	
+	
+	
+
+	 
+	</table>
+	</form>
+
+
+
+
+
+
+
+</body>
+</html>

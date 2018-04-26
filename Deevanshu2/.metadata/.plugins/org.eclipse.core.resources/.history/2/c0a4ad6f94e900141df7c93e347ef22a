@@ -1,0 +1,11 @@
+@CHARSET "ISO-8859-1";
+
+body
+{
+	background-color: light blue;
+}
+
+h1 {
+	font-size:100px;
+    text-shadow: 3px 3px blue;
+}

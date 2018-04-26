@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+
+<hibernate-mapping package="com.model">
+<class name="Employee" table="bct_new" discriminator-value="E">
+<id name="id" column="emp_id">   
+<generator class="increment"/>
+</id>
+ <discriminator column="entity_type"/>
+<property name="name" column="emp_name"/>
+<property name="designation"/>
+<property name="salary"/>
+
+<subclass name="person" discriminator-value="P">
+<property name="personName"/>
+<property name="personAge"/>
+</subclass>
+</class>	
+</hibernate-mapping>

@@ -1,0 +1,9 @@
+package com.infogain.exception;
+
+public class ItemQuantityExceed extends Exception{
+	private String message;
+	public ItemQuantityExceed(String message){
+		super(message);
+		this.message = message;
+	}
+}

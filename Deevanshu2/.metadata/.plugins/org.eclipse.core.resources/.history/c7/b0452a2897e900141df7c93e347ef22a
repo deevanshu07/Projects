@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+
+
+h1 
+{
+	color:#6666FF;
+	font-size:100px;
+    text-shadow: 3px 3px blue;
+}
+
+.tb7 
+{
+	width: 221px;
+	background: transparent url('images/bg.jpg') no-repeat;
+	color : #747862;
+	height:20px;
+	border:0;
+	padding:4px 8px;
+	margin-bottom:0px;
+}
+

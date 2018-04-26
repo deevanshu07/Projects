@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;Rmidatabase/src&apos;&#x0D;&#x0A;- Original project: &apos;RMI5&apos;&#x0D;&#x0A;- Destination element: &apos;Rmidatabase/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     EmployeeClient.java&#x0D;&#x0A;     EmployeeServer.java&#x0D;&#x0A;     Employee.java&#x0D;&#x0A;     NewInterface.java" description="Copy compilation units" destination="=Rmidatabase/src" element1="/src&lt;{EmployeeClient.java" element2="/src&lt;{EmployeeServer.java" element3="/src&lt;{Employee.java" element4="/src&lt;{NewInterface.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1427268736206" units="4" version="1.0"/>
+</session>

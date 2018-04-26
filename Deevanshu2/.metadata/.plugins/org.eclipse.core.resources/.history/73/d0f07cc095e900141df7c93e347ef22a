@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<script src="Script1.js"></script>
+</head>
+<body>
+
+<h1>todos</h1>
+<form onsubmit="confirmInput(); return false">
+<input type="text" name="FirstName" id="demo1" required>
+<br>
+</form>
+
+<p id="myDIV"></>
+</body>

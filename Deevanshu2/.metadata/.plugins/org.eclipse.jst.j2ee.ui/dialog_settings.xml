@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="true" key="J2EE_EXPORT_OVERWRITE"/>
+	<item value="false" key="J2EE_EXPORT_SOURCE"/>
+	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\Practice.war"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\IijpPortal.war"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\Deevanshu_project.war"/>
+		<item value="D:\Training Software\jboss-5.1.0.GA\server\default\deploy\MultipleCallingServlet.war"/>
+		<item value="D:\Training Software\IijpPortal.war"/>
+	</list>
+	<list key="MRU_RUNTIME_STORE">
+		<item value="JBoss v5.0"/>
+	</list>
+</section>
