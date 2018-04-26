@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+org.eclipse.core.net.hasMigrated=true
+proxyData/HTTP/hasAuth=false
+proxyData/HTTP/host=172.18.65.22
+proxyData/HTTP/port=80
+proxyData/HTTPS/hasAuth=false
+proxyData/HTTPS/host=172.18.65.22
+proxyData/HTTPS/port=80
+systemProxiesEnabled=false
